@@ -8,8 +8,9 @@ import id.arieridwan.mvww.R
 import id.arieridwan.mvww.ui.base.BaseActivity
 import id.arieridwan.mvww.core.DataRequestState
 import id.arieridwan.mvww.core.State
-import id.arieridwan.mvww.gateway.entity.MovieListResponse
+import id.arieridwan.mvww.domain.entity.MovieViewParam
 import id.arieridwan.mvww.ui.adapter.MoviesAdapter
+import id.arieridwan.mvww.ui.util.CommonUtils.CATEGORY_POPULAR
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
@@ -30,8 +31,8 @@ class MainActivity : BaseActivity() {
         initView()
         initObserver()
 
-        mViewModel.loadMovies("popular", 1)
-        swipe_refresh_layout.setOnRefreshListener { mViewModel.loadMovies("popular", 1) }
+        mViewModel.loadMovies(CATEGORY_POPULAR, 1)
+        swipe_refresh_layout.setOnRefreshListener { mViewModel.loadMovies(CATEGORY_POPULAR, 1) }
     }
 
     private fun initView() {
@@ -45,16 +46,16 @@ class MainActivity : BaseActivity() {
         mViewModel.showMovies.observe(::getLifecycle, ::updateMoviesUI)
     }
 
-    private fun updateMoviesUI(request: DataRequestState<MovieListResponse>?) {
+    private fun updateMoviesUI(request: DataRequestState<List<MovieViewParam>>?) {
         request?.let { req ->
             when (req.state) {
-                State.SUCCEEDED -> req.data?.let { data ->
+                State.SUCCEEDED -> req.data?.let { movies ->
                     moviesAdapter.apply {
-                        setMovies(data.movies)
+                        setMovies(movies)
                         notifyDataSetChanged()
                     }
                 }
-                State.FAILED -> Toast.makeText(this, "Failed boss ${req.error}", Toast.LENGTH_SHORT).show()
+                State.FAILED -> Toast.makeText(this, "Failed with error : ${req.error}", Toast.LENGTH_SHORT).show()
                 State.COMPLETED -> swipe_refresh_layout.isRefreshing = false
             }
         }

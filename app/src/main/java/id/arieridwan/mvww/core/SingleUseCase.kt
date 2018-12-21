@@ -8,7 +8,7 @@ import io.reactivex.schedulers.Schedulers
  * Created by arieridwan on 20/12/18.
  */
 
-abstract class SingleUseCase<T, in Params> : BaseUseCase() {
+abstract class SingleUseCase<T, in Params>: BaseUseCase() {
 
     internal abstract fun buildUseCaseSingle(params: Params): Single<T>
 

@@ -1,4 +1,4 @@
-package id.arieridwan.mvww.gateway.entity
+package id.arieridwan.mvww.data.entity
 
 import java.util.*
 

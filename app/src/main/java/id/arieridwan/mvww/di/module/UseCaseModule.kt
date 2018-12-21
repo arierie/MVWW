@@ -2,7 +2,7 @@ package id.arieridwan.mvww.di.module
 
 import dagger.Module
 import dagger.Provides
-import id.arieridwan.mvww.domain.interactor.MoviesUseCase
+import id.arieridwan.mvww.domain.interactor.LoadMoviesUseCase
 import id.arieridwan.mvww.domain.repository.MoviesRepository
 import javax.inject.Singleton
 
@@ -15,7 +15,7 @@ class UseCaseModule {
 
     @Provides
     @Singleton
-    fun provideMainUseCase(moviesRepository: MoviesRepository): MoviesUseCase =
-        MoviesUseCase(moviesRepository)
+    fun provideMainUseCase(moviesRepository: MoviesRepository):
+            LoadMoviesUseCase = LoadMoviesUseCase(moviesRepository)
 
 }

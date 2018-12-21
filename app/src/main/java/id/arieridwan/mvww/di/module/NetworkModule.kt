@@ -5,7 +5,7 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import id.arieridwan.mvww.BuildConfig
-import id.arieridwan.mvww.gateway.service.ApiService
+import id.arieridwan.mvww.data.service.ApiService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

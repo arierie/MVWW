@@ -1,7 +1,7 @@
 package id.arieridwan.mvww.domain.interactor
 
 import id.arieridwan.mvww.core.SingleUseCase
-import id.arieridwan.mvww.gateway.entity.MovieListResponse
+import id.arieridwan.mvww.domain.entity.MovieViewParam
 import id.arieridwan.mvww.domain.repository.MoviesRepository
 import io.reactivex.Single
 import javax.inject.Inject
@@ -10,10 +10,10 @@ import javax.inject.Inject
  * Created by arieridwan on 20/12/18.
  */
 
-class MoviesUseCase @Inject constructor (private val moviesRepository: MoviesRepository)
-    : SingleUseCase<MovieListResponse, MoviesUseCase.Params>() {
+class LoadMoviesUseCase @Inject constructor (private val moviesRepository: MoviesRepository)
+    : SingleUseCase<List<MovieViewParam>, LoadMoviesUseCase.Params>() {
 
-    override fun buildUseCaseSingle(params: Params): Single<MovieListResponse> {
+    override fun buildUseCaseSingle(params: Params): Single<List<MovieViewParam>> {
         return with(params) {
             moviesRepository.loadMovies(category, page)
         }

@@ -1,4 +1,4 @@
-package id.arieridwan.mvww.data.entity
+package id.arieridwan.mvww.domain.entity
 
 import android.os.Parcel
 import android.os.Parcelable

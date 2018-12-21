@@ -15,7 +15,7 @@ import javax.inject.Singleton
  * Created by arieridwan on 20/12/18.
  */
 
-@Module(includes = [(AndroidInjectionModule::class)])
+@Module(includes = [(AndroidInjectionModule::class), (ViewModelModule::class)])
 open class ApplicationModule {
 
     @Singleton

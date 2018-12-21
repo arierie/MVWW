@@ -1,6 +1,6 @@
 package id.arieridwan.mvww.domain.repository
 
-import id.arieridwan.mvww.gateway.entity.MovieListResponse
+import id.arieridwan.mvww.domain.entity.MovieViewParam
 import io.reactivex.Single
 
 /**
@@ -9,6 +9,6 @@ import io.reactivex.Single
 
 interface MoviesRepository {
 
-    fun loadMovies(category: String, page: Int): Single<MovieListResponse>
+    fun loadMovies(category: String, page: Int): Single<List<MovieViewParam>>
 
 }

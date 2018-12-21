@@ -8,7 +8,7 @@ import id.arieridwan.mvww.ui.main.MainActivity
  * Created by arieridwan on 20/12/18.
  */
 
-@Module(includes = [(ViewModelModule::class)])
+@Module
 abstract class ActivityModule {
 
     @ContributesAndroidInjector()

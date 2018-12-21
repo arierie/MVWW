@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import id.arieridwan.mvww.R
-import id.arieridwan.mvww.gateway.entity.MovieResponse
+import id.arieridwan.mvww.domain.entity.MovieViewParam
 import id.arieridwan.mvww.ui.GlideApp
 import java.util.ArrayList
 
@@ -18,7 +18,7 @@ import java.util.ArrayList
 
 class MoviesAdapter(val context: Context) : RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
 
-    private var mMovieList: MutableList<MovieResponse>? = null
+    private var mMovieList: MutableList<MovieViewParam>? = null
     private val mInflater: LayoutInflater = LayoutInflater.from(context)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -46,7 +46,7 @@ class MoviesAdapter(val context: Context) : RecyclerView.Adapter<MoviesAdapter.V
         return mMovieList?.size ?: 0
     }
 
-    fun setMovies(movieList: List<MovieResponse>) {
+    fun setMovies(movieList: List<MovieViewParam>) {
         this.mMovieList = ArrayList()
         this.mMovieList?.addAll(movieList)
         notifyDataSetChanged()
