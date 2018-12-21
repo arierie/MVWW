@@ -48,7 +48,6 @@ class MainActivity : BaseActivity() {
     private fun updateMoviesUI(request: DataRequestState<MovieListResponse>?) {
         request?.let { req ->
             when (req.state) {
-                State.LOADING -> swipe_refresh_layout.isRefreshing = true
                 State.SUCCEEDED -> req.data?.let { data ->
                     moviesAdapter.apply {
                         setMovies(data.movies)
