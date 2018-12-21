@@ -1,44 +1,35 @@
 package id.arieridwan.mvww.ui.adapter
 
-import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import id.arieridwan.mvww.R
 import id.arieridwan.mvww.domain.entity.MovieViewParam
-import id.arieridwan.mvww.ui.GlideApp
-import java.util.ArrayList
+import id.arieridwan.mvww.ui.util.CommonUtils.getPosterUrl
+import id.arieridwan.mvww.ui.util.loadFromUrl
+import kotlinx.android.synthetic.main.list_item.view.*
 
 /**
  * Created by arieridwan on 20/12/18.
  */
 
-class MoviesAdapter(val context: Context) : RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
+class MoviesAdapter: RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>() {
 
     private var mMovieList: MutableList<MovieViewParam>? = null
-    private val mInflater: LayoutInflater = LayoutInflater.from(context)
+    private var mItemListener: MoviesListener? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = mInflater.inflate(R.layout.list_item, parent, false)
-        val viewHolder = ViewHolder(view)
-        view.setOnClickListener {
-            // TODO navigate to detail activity
-        }
-        return viewHolder
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
+        return MoviesViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false))
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
         mMovieList?.let { movies ->
-            val movie = movies[position]
-            val posterPath = "http://image.tmdb.org/t/p/w185${movie.posterPath}"
-            GlideApp.with(context)
-                .asBitmap()
-                .load(posterPath)
-                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-                .into(holder.imageView)
+            holder.itemView.imageView.loadFromUrl(holder.itemView.context,
+                getPosterUrl(movies[position].posterPath))
+            holder.itemView.setOnClickListener {
+                mItemListener?.onItemClick(movies[position])
+            }
         }
     }
 
@@ -47,13 +38,18 @@ class MoviesAdapter(val context: Context) : RecyclerView.Adapter<MoviesAdapter.V
     }
 
     fun setMovies(movieList: List<MovieViewParam>) {
-        this.mMovieList = ArrayList()
         this.mMovieList?.addAll(movieList)
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var imageView: ImageView = itemView.findViewById(R.id.imageView) as ImageView
+    fun setListener(itemListener: MoviesListener) {
+        mItemListener = itemListener
     }
+
+    interface MoviesListener {
+        fun onItemClick(item: MovieViewParam)
+    }
+
+    class MoviesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
 }

@@ -13,14 +13,14 @@ import id.arieridwan.mvww.ui.adapter.MoviesAdapter
 import id.arieridwan.mvww.ui.util.CommonUtils.CATEGORY_POPULAR
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(), MoviesAdapter.MoviesListener {
 
     private val mViewModel: MainViewModel by lazy {
         ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java)
     }
 
     private val moviesAdapter: MoviesAdapter by lazy {
-        MoviesAdapter(this)
+        MoviesAdapter()
     }
 
     override fun layoutResource(): Int = R.layout.activity_main
@@ -36,6 +36,7 @@ class MainActivity : BaseActivity() {
     }
 
     private fun initView() {
+        moviesAdapter.setListener(this)
         recycler_view.apply {
             layoutManager = GridLayoutManager(this@MainActivity, 2)
             adapter = moviesAdapter
@@ -49,16 +50,15 @@ class MainActivity : BaseActivity() {
     private fun updateMoviesUI(request: DataRequestState<List<MovieViewParam>>?) {
         request?.let { req ->
             when (req.state) {
-                State.SUCCEEDED -> req.data?.let { movies ->
-                    moviesAdapter.apply {
-                        setMovies(movies)
-                        notifyDataSetChanged()
-                    }
-                }
+                State.SUCCEEDED -> req.data?.let { movies -> moviesAdapter.setMovies(movies) }
                 State.FAILED -> Toast.makeText(this, "Failed with error : ${req.error}", Toast.LENGTH_SHORT).show()
                 State.COMPLETED -> swipe_refresh_layout.isRefreshing = false
             }
         }
+    }
+
+    override fun onItemClick(item: MovieViewParam) {
+        // TODO navigate to detail page
     }
 
 }

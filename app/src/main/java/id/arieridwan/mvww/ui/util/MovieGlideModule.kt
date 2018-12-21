@@ -1,4 +1,4 @@
-package id.arieridwan.mvww.ui
+package id.arieridwan.mvww.ui.util
 
 import android.content.Context
 import com.bumptech.glide.GlideBuilder
