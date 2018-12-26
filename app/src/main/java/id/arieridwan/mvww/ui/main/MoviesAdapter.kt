@@ -1,4 +1,4 @@
-package id.arieridwan.mvww.ui.adapter
+package id.arieridwan.mvww.ui.main
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -16,11 +16,17 @@ import kotlinx.android.synthetic.main.list_item.view.*
 
 class MoviesAdapter: RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>() {
 
-    private var mMovieList: MutableList<MovieViewParam>? = null
+    private val mMovieList: MutableList<MovieViewParam> = mutableListOf()
     private var mItemListener: MoviesListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
-        return MoviesViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false))
+        return MoviesViewHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.list_item,
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
@@ -34,11 +40,11 @@ class MoviesAdapter: RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return mMovieList?.size ?: 0
+        return mMovieList.size
     }
 
     fun setMovies(movieList: List<MovieViewParam>) {
-        this.mMovieList?.addAll(movieList)
+        this.mMovieList.addAll(movieList)
         notifyDataSetChanged()
     }
 

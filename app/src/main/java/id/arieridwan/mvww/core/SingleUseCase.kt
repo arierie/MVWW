@@ -2,6 +2,8 @@ package id.arieridwan.mvww.core
 
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 
 /**
@@ -16,15 +18,17 @@ abstract class SingleUseCase<T, in Params>: BaseUseCase() {
         onSuccess: ((t: T) -> Unit),
         onError: ((t: Throwable) -> Unit),
         onFinished: () -> Unit = {},
+        onSubscribe: ((d: Disposable) -> Unit),
         params: Params
     ) {
         disposeLast()
         lastDisposable = buildUseCaseSingle(params)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe(onSubscribe)
             .doAfterTerminate(onFinished)
             .subscribe(onSuccess, onError)
-        lastDisposable?.let { compositeDisposable.add(it) }
+            .addTo(compositeDisposable)
     }
 
 }

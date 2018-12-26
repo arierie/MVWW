@@ -2,11 +2,12 @@ package id.arieridwan.mvww.ui.main
 
 import android.arch.lifecycle.LiveData
 import id.arieridwan.mvww.ui.base.BaseViewModel
-import id.arieridwan.mvww.core.DataRequestState
+import id.arieridwan.mvww.ui.base.state.DataRequestState
 import id.arieridwan.mvww.core.SingleLiveEvent
-import id.arieridwan.mvww.core.State
+import id.arieridwan.mvww.ui.base.state.State
 import id.arieridwan.mvww.domain.entity.MovieViewParam
 import id.arieridwan.mvww.domain.interactor.LoadMoviesUseCase
+import id.arieridwan.mvww.ui.base.state.ScreenState
 import javax.inject.Inject
 
 /**
@@ -20,15 +21,27 @@ class MainViewModel @Inject constructor(private val loadMoviesUseCase: LoadMovie
     val showMovies: LiveData<DataRequestState<List<MovieViewParam>>>
         get() = _showMovies
 
+    private val _screenChange: SingleLiveEvent<ScreenState> = SingleLiveEvent()
+    val screenChange: LiveData<ScreenState>
+        get() = _screenChange
+
     fun loadMovies(category: String, page: Int) {
         loadMoviesUseCase.execute(
+            onSubscribe = {
+                _screenChange.postValue(ScreenState.LOADING) // use postValue on background thread
+            },
             onSuccess = {
                 _showMovies.value = DataRequestState(State.SUCCEEDED, it)
             },
             onError = {
-                _showMovies.value = DataRequestState(State.FAILED, null, it.message)
+                _showMovies.value = DataRequestState(
+                    State.FAILED,
+                    null,
+                    it.message
+                )
             },
             onFinished = {
+                _screenChange.value = ScreenState.AVAILABLE // currently, we don't have an empty state, it will always available
                 _showMovies.value = DataRequestState(State.COMPLETED)
             },
             params = LoadMoviesUseCase.Params(category, page)
