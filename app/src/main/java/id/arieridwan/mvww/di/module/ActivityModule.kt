@@ -11,7 +11,7 @@ import id.arieridwan.mvww.ui.main.MainActivity
 @Module
 abstract class ActivityModule {
 
-    @ContributesAndroidInjector()
+    @ContributesAndroidInjector(modules = [FragmentModule::class])
     abstract fun mainActivityInjector(): MainActivity
 
 }

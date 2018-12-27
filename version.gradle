@@ -9,6 +9,7 @@ ext {
     def moshiVersion = "1.6.0"
     def rxVersion = "2.2.0"
     def archVersion = "1.1.1"
+    def navVersion = '1.0.0-alpha09'
 
     // support
     appCompat = "com.android.support:appcompat-v7:$supportVersion"
@@ -59,6 +60,9 @@ ext {
     lifecycleCompiler = "android.arch.lifecycle:compiler:$archVersion"
     lifecycleReactivestreams = "android.arch.lifecycle:reactivestreams:$archVersion"
 
+    navFragmentKtx = "android.arch.navigation:navigation-fragment-ktx:$navVersion"
+    navUiKtx = "android.arch.navigation:navigation-ui-ktx:$navVersion"
+
     // testing
     junit = 'junit:junit:4.12'
     testRunner = 'com.android.support.test:runner:1.0.2'
@@ -68,8 +72,5 @@ ext {
 def addRepos(RepositoryHandler handler) {
     handler.google()
     handler.jcenter()
-    handler.maven {
-        url "https://maven.google.com"
-    }
 }
 ext.addRepos = this.&addRepos

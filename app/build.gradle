@@ -39,6 +39,7 @@ dependencies {
 
     implementation dagger
     implementation daggerSupport
+    implementation 'com.android.support:support-v4:28.0.0'
     kapt daggerCompiler
     kapt daggerAndroidProcessor
 
@@ -58,6 +59,9 @@ dependencies {
     implementation rxKotlin
 
     implementation timber
+
+    implementation navFragmentKtx
+    implementation navUiKtx
 
     implementation lifecycleExtensions
     kapt lifecycleCompiler
