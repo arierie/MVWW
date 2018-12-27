@@ -7,9 +7,9 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import id.arieridwan.mvww.di.ViewModelFactory
 import id.arieridwan.mvww.di.annotation.ViewModelKey
-import id.arieridwan.mvww.ui.detail.DetailViewModel
-import id.arieridwan.mvww.ui.home.HomeViewModel
-import id.arieridwan.mvww.ui.main.MainViewModel
+import id.arieridwan.mvww.presentation.ui.detail.DetailViewModel
+import id.arieridwan.mvww.presentation.ui.home.HomeViewModel
+import id.arieridwan.mvww.presentation.ui.main.MainViewModel
 
 /**
  * Created by arieridwan on 20/12/18.

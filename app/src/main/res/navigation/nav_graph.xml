@@ -6,7 +6,7 @@
 
     <fragment
             android:id="@+id/homeFragment"
-            android:name="id.arieridwan.mvww.ui.home.HomeFragment">
+            android:name="id.arieridwan.mvww.presentation.ui.home.HomeFragment">
 
         <action
                 android:id="@+id/action_home_to_detailFragment"
@@ -20,6 +20,6 @@
 
     <fragment
             android:id="@+id/detailFragment"
-            android:name="id.arieridwan.mvww.ui.detail.DetailFragment"/>
+            android:name="id.arieridwan.mvww.presentation.ui.detail.DetailFragment"/>
 
 </navigation>

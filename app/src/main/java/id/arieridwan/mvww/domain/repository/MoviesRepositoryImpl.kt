@@ -2,8 +2,8 @@ package id.arieridwan.mvww.domain.repository
 
 import id.arieridwan.mvww.BuildConfig
 import id.arieridwan.mvww.data.converter.MovieConverter
-import id.arieridwan.mvww.data.service.ApiService
-import id.arieridwan.mvww.domain.entity.MovieViewParam
+import id.arieridwan.mvww.data.remote.service.ApiService
+import id.arieridwan.mvww.presentation.entity.MovieViewParam
 import io.reactivex.Single
 
 class MoviesRepositoryImpl(private val apiService: ApiService) : MoviesRepository {

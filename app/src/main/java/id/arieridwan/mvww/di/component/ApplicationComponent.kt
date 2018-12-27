@@ -17,7 +17,8 @@ import javax.inject.Singleton
     (ApplicationModule::class),
     (RepositoryModule::class),
     (UseCaseModule::class),
-    (NetworkModule::class)])
+    (NetworkModule::class),
+    (DaoModule::class)])
 interface ApplicationComponent {
 
     fun inject(baseApplication: BaseApplication)

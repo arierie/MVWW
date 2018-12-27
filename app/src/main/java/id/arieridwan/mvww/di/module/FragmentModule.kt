@@ -2,8 +2,8 @@ package id.arieridwan.mvww.di.module
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
-import id.arieridwan.mvww.ui.detail.DetailFragment
-import id.arieridwan.mvww.ui.home.HomeFragment
+import id.arieridwan.mvww.presentation.ui.detail.DetailFragment
+import id.arieridwan.mvww.presentation.ui.home.HomeFragment
 
 /**
  * Created by arieridwan on 26/12/18.

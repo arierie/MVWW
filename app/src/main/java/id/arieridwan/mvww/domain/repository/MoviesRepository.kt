@@ -1,6 +1,6 @@
 package id.arieridwan.mvww.domain.repository
 
-import id.arieridwan.mvww.domain.entity.MovieViewParam
+import id.arieridwan.mvww.presentation.entity.MovieViewParam
 import io.reactivex.Single
 
 /**

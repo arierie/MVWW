@@ -1,7 +1,7 @@
 package id.arieridwan.mvww.domain.interactor
 
 import id.arieridwan.mvww.core.SingleUseCase
-import id.arieridwan.mvww.domain.entity.MovieViewParam
+import id.arieridwan.mvww.presentation.entity.MovieViewParam
 import id.arieridwan.mvww.domain.repository.MoviesRepository
 import io.reactivex.Single
 import javax.inject.Inject
