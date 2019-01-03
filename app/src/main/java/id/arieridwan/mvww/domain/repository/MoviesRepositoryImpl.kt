@@ -1,20 +1,43 @@
 package id.arieridwan.mvww.domain.repository
 
 import id.arieridwan.mvww.BuildConfig
-import id.arieridwan.mvww.data.converter.MovieConverter
+import id.arieridwan.mvww.data.mapper.MovieMapper
+import id.arieridwan.mvww.data.local.database.MovieDB
 import id.arieridwan.mvww.data.remote.service.ApiService
 import id.arieridwan.mvww.presentation.entity.MovieViewParam
-import io.reactivex.Single
+import io.reactivex.Observable
+import io.reactivex.schedulers.Schedulers
 
-class MoviesRepositoryImpl(private val apiService: ApiService) : MoviesRepository {
+class MoviesRepositoryImpl(
+    private val apiService: ApiService,
+    private val movieDataBase: MovieDB
+) : MoviesRepository {
 
-    override fun loadMovies(category: String, page: Int): Single<List<MovieViewParam>> {
-        return apiService.getMovies(category, BuildConfig.ApiKey, page)
-            .map { response ->
-                val movies: MutableList<MovieViewParam> = mutableListOf()
-                response.movies.forEach { item -> movies.add(MovieConverter.toMovieViewParam(item)) }
-                return@map movies
-            }
+    override fun loadMovies(category: String, page: Int): Observable<List<MovieViewParam>> {
+        return getMoviesFromNetwork(category, page)
     }
+
+    private fun getMoviesFromNetwork(category: String, page: Int): Observable<List<MovieViewParam>> {
+        return apiService.getMovies(category, BuildConfig.ApiKey, page)
+            .map { MovieMapper.toMovieViewParamsFromResponse(it.movies) }
+//        comment it for temporary
+//            .doOnNext { movieListResponse ->
+//                movieDataBase.movieDao().saveMovies(MovieMapper.toMovies(movieListResponse))
+//            }
+    }
+
+    private fun getMoviesFromLocal(): Observable<List<MovieViewParam>> {
+        return movieDataBase.movieDao().getMovies()
+            .map { movies ->
+                MovieMapper.toMovieViewParamsFromMovie(movies)
+            }
+            .toObservable()
+    }
+
+    private fun loadMoviesDong(category: String, page: Int) =
+        Observable.mergeDelayError(
+            getMoviesFromNetwork(category, page).subscribeOn(Schedulers.io()),
+            getMoviesFromLocal().subscribeOn(Schedulers.io())
+        )
 
 }

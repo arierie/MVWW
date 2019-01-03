@@ -1,11 +1,8 @@
 package id.arieridwan.mvww.data.local.dao
 
-import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Insert
-import android.arch.persistence.room.Query
+import android.arch.persistence.room.*
 import id.arieridwan.mvww.data.local.entity.Movie
-import android.arch.persistence.room.Delete
-import android.arch.persistence.room.Update
+import io.reactivex.Single
 
 /**
  * Created by arieridwan on 27/12/18.
@@ -15,18 +12,18 @@ import android.arch.persistence.room.Update
 interface MovieDao {
 
     @Query("SELECT * FROM movie")
-    fun getMovies(): List<Movie>
+    fun getMovies(): Single<List<Movie>>
 
     @Query("SELECT * FROM movie WHERE title LIKE :title LIMIT 1")
-    fun getMovieByTitle(title: String): Movie
+    fun getMovieByTitle(title: String): Single<Movie>
 
     @Query("SELECT * FROM movie WHERE id LIKE :id LIMIT 1")
-    fun getMovieById(id: String): Movie
+    fun getMovieById(id: String): Single<Movie>
 
-    @Insert
-    fun insertMovies(movies: List<Movie>)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun saveMovies(movies: List<Movie>)
 
-    @Update
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     fun updateMovie(movie: Movie)
 
     @Delete

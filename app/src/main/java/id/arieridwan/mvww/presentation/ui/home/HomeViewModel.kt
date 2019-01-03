@@ -26,23 +26,16 @@ class HomeViewModel @Inject constructor(private val loadMoviesUseCase: LoadMovie
         get() = _screenChange
 
     fun loadMovies(category: String, page: Int) {
+        _screenChange.postValue(ScreenState.LOADING) // use postValue on background thread
         loadMoviesUseCase.execute(
-            onSubscribe = {
-                _screenChange.postValue(ScreenState.LOADING) // use postValue on background thread
-            },
-            onSuccess = {
+            onNext = {
                 _showMovies.value = DataRequestState(State.SUCCEEDED, it)
             },
             onError = {
-                _showMovies.value = DataRequestState(
-                    State.FAILED,
-                    null,
-                    it.message
-                )
+                _showMovies.value = DataRequestState(State.FAILED, null, it.message)
             },
-            onFinished = {
+            onComplete = {
                 _screenChange.value = ScreenState.AVAILABLE // currently, we don't have an empty state, it will always available
-                _showMovies.value = DataRequestState(State.COMPLETED)
             },
             params = LoadMoviesUseCase.Params(category, page)
         )

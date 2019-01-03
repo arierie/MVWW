@@ -66,6 +66,7 @@ ext {
 
     roomRuntime = "android.arch.persistence.room:runtime:$archVersion"
     roomCompiler = "android.arch.persistence.room:compiler:$archVersion"
+    roomRx = "android.arch.persistence.room:rxjava2:$archVersion"
 
     // testing
     junit = 'junit:junit:4.12'

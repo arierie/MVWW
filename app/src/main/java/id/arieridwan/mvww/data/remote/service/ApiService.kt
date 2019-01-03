@@ -4,7 +4,6 @@ import id.arieridwan.mvww.data.remote.entity.MovieListResponse
 import id.arieridwan.mvww.data.remote.entity.ReviewListResponse
 import id.arieridwan.mvww.data.remote.entity.TrailerListResponse
 import io.reactivex.Observable
-import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -17,7 +16,7 @@ interface ApiService {
 
     @GET("movie/{category}")
     fun getMovies(@Path("category") category: String, @Query("api_key") apiKey: String,
-                  @Query("page") page: Int): Single<MovieListResponse>
+                  @Query("page") page: Int): Observable<MovieListResponse>
 
     @GET("movie/{id}/videos")
     fun getTrailer(@Query("api_key") apiKey: String, @Path("id") id: Int): Observable<TrailerListResponse>

@@ -1,6 +1,7 @@
 package id.arieridwan.mvww.domain.repository
 
 import id.arieridwan.mvww.presentation.entity.MovieViewParam
+import io.reactivex.Observable
 import io.reactivex.Single
 
 /**
@@ -9,6 +10,6 @@ import io.reactivex.Single
 
 interface MoviesRepository {
 
-    fun loadMovies(category: String, page: Int): Single<List<MovieViewParam>>
+    fun loadMovies(category: String, page: Int): Observable<List<MovieViewParam>>
 
 }

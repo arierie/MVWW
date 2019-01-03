@@ -1,9 +1,9 @@
 package id.arieridwan.mvww.domain.interactor
 
-import id.arieridwan.mvww.core.SingleUseCase
+import id.arieridwan.mvww.core.ObservableUseCase
 import id.arieridwan.mvww.presentation.entity.MovieViewParam
 import id.arieridwan.mvww.domain.repository.MoviesRepository
-import io.reactivex.Single
+import io.reactivex.Observable
 import javax.inject.Inject
 
 /**
@@ -11,9 +11,9 @@ import javax.inject.Inject
  */
 
 class LoadMoviesUseCase @Inject constructor (private val moviesRepository: MoviesRepository)
-    : SingleUseCase<List<MovieViewParam>, LoadMoviesUseCase.Params>() {
+    : ObservableUseCase<List<MovieViewParam>, LoadMoviesUseCase.Params>() {
 
-    override fun buildUseCaseSingle(params: Params): Single<List<MovieViewParam>> {
+    override fun buildUseCaseObservable(params: Params): Observable<List<MovieViewParam>> {
         return with(params) {
             moviesRepository.loadMovies(category, page)
         }
