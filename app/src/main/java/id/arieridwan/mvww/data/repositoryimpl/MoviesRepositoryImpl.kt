@@ -1,9 +1,10 @@
-package id.arieridwan.mvww.domain.repository
+package id.arieridwan.mvww.data.repositoryimpl
 
 import id.arieridwan.mvww.BuildConfig
 import id.arieridwan.mvww.data.mapper.MovieMapper
 import id.arieridwan.mvww.data.local.database.MovieDB
 import id.arieridwan.mvww.data.remote.service.ApiService
+import id.arieridwan.mvww.domain.repository.MoviesRepository
 import id.arieridwan.mvww.presentation.entity.MovieViewParam
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
@@ -20,10 +21,9 @@ class MoviesRepositoryImpl(
     private fun getMoviesFromNetwork(category: String, page: Int): Observable<List<MovieViewParam>> {
         return apiService.getMovies(category, BuildConfig.ApiKey, page)
             .map { MovieMapper.toMovieViewParamsFromResponse(it.movies) }
-//        comment it for temporary
-//            .doOnNext { movieListResponse ->
-//                movieDataBase.movieDao().saveMovies(MovieMapper.toMovies(movieListResponse))
-//            }
+            .doOnNext { movieListResponse ->
+                movieDataBase.movieDao().saveMovies(MovieMapper.toMovies(movieListResponse))
+            }
     }
 
     private fun getMoviesFromLocal(): Observable<List<MovieViewParam>> {
