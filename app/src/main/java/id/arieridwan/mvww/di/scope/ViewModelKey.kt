@@ -1,4 +1,4 @@
-package id.arieridwan.mvww.di.annotation
+package id.arieridwan.mvww.di.scope
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

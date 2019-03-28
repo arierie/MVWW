@@ -6,7 +6,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 import id.arieridwan.mvww.di.ViewModelFactory
-import id.arieridwan.mvww.di.annotation.ViewModelKey
+import id.arieridwan.mvww.di.scope.ViewModelKey
 import id.arieridwan.mvww.presentation.ui.detail.DetailViewModel
 import id.arieridwan.mvww.presentation.ui.home.HomeViewModel
 import id.arieridwan.mvww.presentation.ui.main.MainViewModel

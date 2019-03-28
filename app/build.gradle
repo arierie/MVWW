@@ -1,77 +1,55 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-
-android {
-    compileSdkVersion 28
-    defaultConfig {
-        applicationId "id.arieridwan.mvww"
-        minSdkVersion 15
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "BASE_URL", "\"http://api.themoviedb.org/3/\""
-            buildConfigField 'String', "ApiKey", apiKey
-        }
-        debug {
-            buildConfigField "String", "BASE_URL", "\"http://api.themoviedb.org/3/\""
-            buildConfigField 'String', "ApiKey", apiKey
-        }
-    }
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
 }
+
+apply from: '../baseconfig.gradle'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation kotlinLib
+    implementation Deps.kotlinLib
 
-    implementation constraintLayout
-    implementation appCompat
-    implementation recyclerView
-    implementation cardView
-    implementation design
+    implementation Deps.constraintLayout
+    implementation Deps.recyclerView
+    implementation Deps.cardView
+    implementation Deps.design
 
-    implementation dagger
-    implementation daggerSupport
-    implementation supportV4
-    kapt daggerCompiler
-    kapt daggerAndroidProcessor
+    implementation Deps.dagger
+    implementation Deps.daggerSupport
+    kapt Deps.daggerCompiler
+    kapt Deps.daggerAndroidProcessor
 
-    implementation glide
-    kapt glideCompiler
+    implementation Deps.glide
+    kapt Deps.glideCompiler
 
-    implementation retrofit
-    implementation retrofitRxJavaAdapter
-    implementation okhttp
-    implementation okhttpLoggingInterceptor
-    implementation retrofitConverterMoshi
-    implementation moshi
-    implementation moshiKotlin
+    implementation Deps.retrofit
+    implementation Deps.retrofitRxJavaAdapter
+    implementation Deps.okhttp
+    implementation Deps.okhttpLoggingInterceptor
+    implementation Deps.retrofitConverterMoshi
+    implementation Deps.moshi
+    implementation Deps.moshiKotlin
 
-    implementation rxAndroid
-    implementation rxJava
-    implementation rxKotlin
+    implementation Deps.rxAndroid
+    implementation Deps.rxJava
+    implementation Deps.rxKotlin
 
-    implementation timber
+    implementation Deps.timber
 
-    implementation navFragmentKtx
-    implementation navUiKtx
+    implementation Deps.navigationFragment
+    implementation Deps.navigationUi
 
-    implementation lifecycleExtensions
-    kapt lifecycleCompiler
-    implementation lifecycleReactivestreams
+    implementation Deps.lifecycleExtensions
+    kapt Deps.lifecycleCompiler
+    implementation Deps.lifecycleReactivestreams
 
-    implementation roomRuntime
-    kapt roomCompiler
-    implementation roomRx
+    implementation Deps.roomRuntime
+    kapt Deps.roomCompiler
+    implementation Deps.roomRx
 
-    testImplementation junit
-    androidTestImplementation testRunner
-    androidTestImplementation espressoCore
+    testImplementation Deps.junit
+    androidTestImplementation Deps.testRunner
+    androidTestImplementation Deps.espressoCore
 }

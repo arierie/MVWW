@@ -1,0 +1,24 @@
+android {
+    compileSdkVersion Config.compileVersion
+    buildToolsVersion Config.buildTools
+    defaultConfig {
+        applicationId Config.packageName
+        minSdkVersion Config.minVersion
+        targetSdkVersion Config.targetVersion
+        versionCode Config.versionCode
+        versionName Config.versionName
+        testInstrumentationRunner Config.testRunner
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "BASE_URL", "\"http://api.themoviedb.org/3/\""
+            buildConfigField 'String', "ApiKey", apiKey
+        }
+        debug {
+            buildConfigField "String", "BASE_URL", "\"http://api.themoviedb.org/3/\""
+            buildConfigField 'String', "ApiKey", apiKey
+        }
+    }
+}

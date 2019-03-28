@@ -1,9 +1,11 @@
 buildscript {
-    apply from: 'version.gradle'
-    addRepos(repositories)
+    repositories {
+        google()
+        jcenter()
+    }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.2'
-        classpath kotlin
+        classpath Config.gradlePlugin
+        classpath Config.kotlinPlugin
     }
     repositories {
         google()
@@ -11,7 +13,10 @@ buildscript {
 }
 
 allprojects {
-    addRepos(repositories)
+    repositories {
+        google()
+        jcenter()
+    }
 }
 
 task clean(type: Delete) {
