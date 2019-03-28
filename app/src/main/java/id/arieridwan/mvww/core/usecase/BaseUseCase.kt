@@ -1,4 +1,4 @@
-package id.arieridwan.mvww.core
+package id.arieridwan.mvww.core.usecase
 
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable

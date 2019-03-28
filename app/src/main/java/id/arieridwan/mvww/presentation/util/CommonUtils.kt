@@ -1,10 +1,11 @@
 package id.arieridwan.mvww.presentation.util
 
-import android.arch.lifecycle.LifecycleOwner
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
 import android.content.Context
 import android.view.View
 import android.widget.ImageView
+import id.arieridwan.mvww.di.module.GlideApp
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 
 /**
@@ -37,7 +38,7 @@ fun ImageView.loadFromUrl(context: Context, url: String) {
 }
 
 fun <T> LiveData<T>.nonNullObserve(owner: LifecycleOwner, observer: (t: T) -> Unit) {
-    this.observe(owner, android.arch.lifecycle.Observer {
+    this.observe(owner, androidx.lifecycle.Observer {
         it?.let(observer)
     })
 }

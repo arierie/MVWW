@@ -1,7 +1,7 @@
 package id.arieridwan.mvww.data.local.database
 
-import android.arch.persistence.room.Database
-import android.arch.persistence.room.RoomDatabase
+import androidx.room.Database
+import androidx.room.RoomDatabase
 import id.arieridwan.mvww.data.local.dao.MovieDao
 import id.arieridwan.mvww.data.local.entity.Movie
 

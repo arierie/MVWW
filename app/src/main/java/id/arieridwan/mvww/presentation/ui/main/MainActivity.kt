@@ -1,9 +1,9 @@
 package id.arieridwan.mvww.presentation.ui.main
 
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import id.arieridwan.mvww.R
-import id.arieridwan.mvww.presentation.ui.base.BaseActivity
+import id.arieridwan.mvww.core.ui.BaseActivity
 
 class MainActivity : BaseActivity() {
 

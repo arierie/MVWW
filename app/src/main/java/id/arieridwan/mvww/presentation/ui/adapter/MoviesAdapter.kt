@@ -1,6 +1,6 @@
 package id.arieridwan.mvww.presentation.ui.adapter
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.list_item.view.*
  * Created by arieridwan on 20/12/18.
  */
 
-class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>() {
+class MoviesAdapter : androidx.recyclerview.widget.RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>() {
 
     private val mMovieList: MutableList<MovieViewParam> = mutableListOf()
     private var mItemListener: MoviesListener? = null
@@ -57,6 +57,6 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>() {
         fun onItemClick(item: MovieViewParam)
     }
 
-    class MoviesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    class MoviesViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView)
 
 }

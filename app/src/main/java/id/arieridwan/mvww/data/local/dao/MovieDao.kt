@@ -1,6 +1,6 @@
 package id.arieridwan.mvww.data.local.dao
 
-import android.arch.persistence.room.*
+import androidx.room.*
 import id.arieridwan.mvww.data.local.entity.Movie
 import io.reactivex.Single
 

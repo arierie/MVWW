@@ -2,8 +2,11 @@ buildscript {
     apply from: 'version.gradle'
     addRepos(repositories)
     dependencies {
-        classpath gradlePlugin
+        classpath 'com.android.tools.build:gradle:3.3.2'
         classpath kotlin
+    }
+    repositories {
+        google()
     }
 }
 

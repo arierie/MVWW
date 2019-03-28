@@ -1,10 +1,9 @@
-package id.arieridwan.mvww.presentation.ui.base
+package id.arieridwan.mvww.core.ui
 
 import android.content.Context
 import android.os.Bundle
 import android.os.Parcelable
-import android.support.annotation.IdRes
-import android.support.v4.app.Fragment
+import androidx.annotation.IdRes
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,13 +19,13 @@ import javax.inject.Inject
  * Created by arieridwan on 26/12/18.
  */
 
-abstract class BaseFragment: Fragment(), HasSupportFragmentInjector {
+abstract class BaseFragment: androidx.fragment.app.Fragment(), HasSupportFragmentInjector {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
     @Inject
-    lateinit var childFragmentInjector: DispatchingAndroidInjector<Fragment>
+    lateinit var childFragmentInjector: DispatchingAndroidInjector<androidx.fragment.app.Fragment>
 
     abstract fun layoutResource(): Int
 
@@ -39,7 +38,7 @@ abstract class BaseFragment: Fragment(), HasSupportFragmentInjector {
         super.onAttach(context)
     }
 
-    override fun supportFragmentInjector(): AndroidInjector<Fragment>? {
+    override fun supportFragmentInjector(): AndroidInjector<androidx.fragment.app.Fragment>? {
         return childFragmentInjector
     }
 

@@ -1,10 +1,10 @@
-package id.arieridwan.mvww.core
+package id.arieridwan.mvww.core.custom
 
-import android.arch.lifecycle.LifecycleOwner
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.Observer
-import android.support.annotation.MainThread
-import android.util.Log
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import androidx.annotation.MainThread
+import timber.log.Timber
 
 import java.util.concurrent.atomic.AtomicBoolean
 
@@ -25,10 +25,9 @@ class SingleLiveEvent<T> : MutableLiveData<T>() {
     private val mPending = AtomicBoolean(false)
 
     @MainThread
-    override fun observe(owner: LifecycleOwner, observer: Observer<T>) {
-
+    override fun observe(owner: LifecycleOwner, observer: Observer<in T>) {
         if (hasActiveObservers()) {
-            Log.w(TAG, "Multiple observers registered but only one will be notified of changes.")
+            Timber.tag(TAG).w("Multiple observers registered but only one will be notified of changes.")
         }
 
         // Observe the internal MutableLiveData
@@ -54,7 +53,7 @@ class SingleLiveEvent<T> : MutableLiveData<T>() {
     }
 
     companion object {
-
-        private val TAG = "SingleLiveEvent"
+        private const val TAG = "SingleLiveEvent"
     }
+
 }

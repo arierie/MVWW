@@ -1,4 +1,4 @@
-package id.arieridwan.mvww.core
+package id.arieridwan.mvww.core.usecase
 
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers

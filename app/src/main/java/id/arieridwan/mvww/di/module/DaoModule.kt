@@ -1,9 +1,9 @@
 package id.arieridwan.mvww.di.module
 
-import android.arch.persistence.room.Room
+import androidx.room.Room
 import dagger.Module
 import dagger.Provides
-import id.arieridwan.mvww.BaseApplication
+import id.arieridwan.mvww.presentation.BaseApplication
 import id.arieridwan.mvww.data.local.dao.MovieDao
 import id.arieridwan.mvww.data.local.database.MovieDB
 import javax.inject.Singleton

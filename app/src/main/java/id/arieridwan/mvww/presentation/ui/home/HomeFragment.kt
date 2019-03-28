@@ -1,23 +1,19 @@
 package id.arieridwan.mvww.presentation.ui.home
 
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
 import android.view.View
 import android.widget.Toast
 
 import id.arieridwan.mvww.R
 import id.arieridwan.mvww.presentation.entity.MovieViewParam
 import id.arieridwan.mvww.presentation.ui.adapter.MoviesAdapter
-import id.arieridwan.mvww.presentation.ui.base.BaseFragment
-import id.arieridwan.mvww.presentation.ui.base.state.DataRequestState
-import id.arieridwan.mvww.presentation.ui.base.state.ScreenState
+import id.arieridwan.mvww.core.ui.BaseFragment
+import id.arieridwan.mvww.core.state.DataRequestState
 import kotlinx.android.synthetic.main.fragment_home.*
-import id.arieridwan.mvww.presentation.ui.base.state.State.SUCCEEDED
-import id.arieridwan.mvww.presentation.ui.base.state.State.FAILED
-import id.arieridwan.mvww.presentation.ui.base.state.State.COMPLETED
-import id.arieridwan.mvww.presentation.util.CommonUtils
-import id.arieridwan.mvww.presentation.util.nonNullObserve
+import id.arieridwan.mvww.core.state.State.SUCCEEDED
+import id.arieridwan.mvww.core.state.State.FAILED
+import id.arieridwan.mvww.core.state.State.COMPLETED
 
 class HomeFragment : BaseFragment(), MoviesAdapter.MoviesListener {
 
@@ -34,33 +30,18 @@ class HomeFragment : BaseFragment(), MoviesAdapter.MoviesListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
-        initObserver()
-
-        mViewModel.loadMovies(CommonUtils.CATEGORY_POPULAR, 1)
-        swipe_refresh_layout.setOnRefreshListener { mViewModel.loadMovies(CommonUtils.CATEGORY_POPULAR, 1) }
+        swipe_refresh_layout.setOnRefreshListener {  }
     }
 
 
     private fun initView() {
         moviesAdapter.setListener(this)
         recycler_view.apply {
-            layoutManager = GridLayoutManager(context, 2)
+            layoutManager = androidx.recyclerview.widget.GridLayoutManager(context, 2)
             adapter = moviesAdapter
         }
     }
 
-    private fun initObserver() {
-        mViewModel.showMovies.nonNullObserve(this, ::updateMoviesUI)
-        mViewModel.screenChange.nonNullObserve(this, ::determineScreenState)
-    }
-
-    private fun determineScreenState(state: ScreenState) {
-        when (state) {
-            ScreenState.LOADING -> showLoading()
-            ScreenState.AVAILABLE -> hideLoading()
-            ScreenState.BLANK -> hideLoading()
-        }
-    }
 
     private fun showLoading() {
         if (!swipe_refresh_layout.isRefreshing) swipe_refresh_layout.isRefreshing = true

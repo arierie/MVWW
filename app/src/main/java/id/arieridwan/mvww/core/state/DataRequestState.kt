@@ -1,4 +1,4 @@
-package id.arieridwan.mvww.presentation.ui.base.state
+package id.arieridwan.mvww.core.state
 
 /**
  * Created by arieridwan on 20/12/18.

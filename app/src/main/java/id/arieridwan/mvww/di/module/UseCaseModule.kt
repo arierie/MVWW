@@ -2,7 +2,7 @@ package id.arieridwan.mvww.di.module
 
 import dagger.Module
 import dagger.Provides
-import id.arieridwan.mvww.domain.interactor.LoadMoviesUseCase
+import id.arieridwan.mvww.domain.usecase.LoadMoviesUseCase
 import id.arieridwan.mvww.domain.repository.MoviesRepository
 import javax.inject.Singleton
 

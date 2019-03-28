@@ -2,7 +2,7 @@ package id.arieridwan.mvww.presentation.ui.detail
 
 import android.os.Bundle
 import android.view.View
-import id.arieridwan.mvww.presentation.ui.base.BaseFragment
+import id.arieridwan.mvww.core.ui.BaseFragment
 import id.arieridwan.mvww.R
 import id.arieridwan.mvww.presentation.entity.MovieViewParam
 import id.arieridwan.mvww.presentation.util.CommonUtils.getBackdropUrl

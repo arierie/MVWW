@@ -1,6 +1,6 @@
 package id.arieridwan.mvww.data.local.entity
 
-import android.arch.persistence.room.Entity
+import androidx.room.Entity
 
 /**
  * Created by arieridwan on 27/12/18.

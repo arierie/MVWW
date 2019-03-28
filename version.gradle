@@ -1,24 +1,24 @@
 ext {
     // version
-    def supportVersion = "28.0.0"
-    def kotlinVersion = "1.2.71"
+    def supportVersion = '1.0.0-beta01'
+    def kotlinVersion = "1.3.21"
     def daggerVersion = "2.17"
-    def glideVersion = "4.7.1"
+    def glideVersion = "4.9.0"
     def retrofitVersion = "2.4.0"
     def okHttpVersion = "3.11.0"
     def moshiVersion = "1.6.0"
     def rxVersion = "2.2.0"
-    def archVersion = "1.1.1"
+    def archVersion = '2.0.0-beta01'
     def navVersion = '1.0.0-alpha09'
 
     // support
-    appCompat = "com.android.support:appcompat-v7:$supportVersion"
-    recyclerView = "com.android.support:recyclerview-v7:$supportVersion"
-    cardView = "com.android.support:cardview-v7:$supportVersion"
-    design = "com.android.support:design:$supportVersion"
-    supportV4 = "com.android.support:support-v4:$supportVersion"
+    appCompat = "androidx.appcompat:appcompat:$supportVersion"
+    recyclerView = "androidx.recyclerview:recyclerview:$supportVersion"
+    cardView = "androidx.cardview:cardview:$supportVersion"
+    design = "com.google.android.material:material:$supportVersion"
+    supportV4 = "androidx.legacy:legacy-support-v4:$supportVersion"
 
-    constraintLayout = 'com.android.support.constraint:constraint-layout:1.1.3'
+    constraintLayout = 'androidx.constraintlayout:constraintlayout:1.1.3'
 
     gradlePlugin = 'com.android.tools.build:gradle:3.2.1'
 
@@ -57,21 +57,21 @@ ext {
     timber = 'com.jakewharton.timber:timber:4.7.1'
 
     // architecture component
-    lifecycleExtensions = "android.arch.lifecycle:extensions:$archVersion"
-    lifecycleCompiler = "android.arch.lifecycle:compiler:$archVersion"
-    lifecycleReactivestreams = "android.arch.lifecycle:reactivestreams:$archVersion"
+    lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:$archVersion"
+    lifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:$archVersion"
+    lifecycleReactivestreams = "androidx.lifecycle:lifecycle-reactivestreams:$archVersion"
 
     navFragmentKtx = "android.arch.navigation:navigation-fragment-ktx:$navVersion"
     navUiKtx = "android.arch.navigation:navigation-ui-ktx:$navVersion"
 
-    roomRuntime = "android.arch.persistence.room:runtime:$archVersion"
-    roomCompiler = "android.arch.persistence.room:compiler:$archVersion"
-    roomRx = "android.arch.persistence.room:rxjava2:$archVersion"
+    roomRuntime = "androidx.room:room-runtime:$archVersion"
+    roomCompiler = "androidx.room:room-compiler:$archVersion"
+    roomRx = "androidx.room:room-rxjava2:$archVersion"
 
     // testing
     junit = 'junit:junit:4.12'
-    testRunner = 'com.android.support.test:runner:1.0.2'
-    espressoCore = 'com.android.support.test.espresso:espresso-core:3.0.2'
+    testRunner = 'androidx.test:runner:1.1.0-alpha4'
+    espressoCore = 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
 }
 
 def addRepos(RepositoryHandler handler) {

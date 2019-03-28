@@ -1,4 +1,4 @@
-package id.arieridwan.mvww.presentation.util
+package id.arieridwan.mvww.di.module
 
 import android.content.Context
 import com.bumptech.glide.GlideBuilder
@@ -20,8 +20,7 @@ class MovieGlideModule: AppGlideModule() {
         builder.setDiskCache(InternalCacheDiskCacheFactory(context, diskCacheSizeBytes.toLong()))
 
         builder.setDefaultRequestOptions(
-            RequestOptions()
-                .format(DecodeFormat.PREFER_ARGB_8888)
+            RequestOptions().format(DecodeFormat.PREFER_ARGB_8888)
         )
     }
 

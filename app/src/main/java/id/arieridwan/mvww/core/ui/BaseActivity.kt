@@ -1,8 +1,8 @@
-package id.arieridwan.mvww.presentation.ui.base
+package id.arieridwan.mvww.core.ui
 
 import android.app.Fragment
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -22,7 +22,7 @@ abstract class BaseActivity : AppCompatActivity(),
     lateinit var frameworkFragmentInjector: DispatchingAndroidInjector<Fragment>
 
     @Inject
-    lateinit var supportFragmentInjector: DispatchingAndroidInjector<android.support.v4.app.Fragment>
+    lateinit var supportFragmentInjector: DispatchingAndroidInjector<androidx.fragment.app.Fragment>
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -37,7 +37,7 @@ abstract class BaseActivity : AppCompatActivity(),
     }
 
     override
-    fun supportFragmentInjector(): AndroidInjector<android.support.v4.app.Fragment> {
+    fun supportFragmentInjector(): AndroidInjector<androidx.fragment.app.Fragment> {
         return supportFragmentInjector
     }
 

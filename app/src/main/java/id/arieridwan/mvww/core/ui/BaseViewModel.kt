@@ -1,7 +1,7 @@
-package id.arieridwan.mvww.presentation.ui.base
+package id.arieridwan.mvww.core.ui
 
-import android.arch.lifecycle.ViewModel
-import id.arieridwan.mvww.core.BaseUseCase
+import androidx.lifecycle.ViewModel
+import id.arieridwan.mvww.core.usecase.BaseUseCase
 
 /**
  * Created by arieridwan on 20/12/18.
