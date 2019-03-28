@@ -47,7 +47,7 @@ class MoviesRepositoryImplTest {
     fun loadMoviesFromDiskSuccess() {
         val category = ""
         val page = 0
-        val movie= Movie("", "", "", "", "", 0, false,0.0, 0.0)
+        val movie = Movie("", "", "", "", "", 0, false,0.0, 0.0)
         val movies = mutableListOf<Movie>()
         movies.add(movie)
         whenever(movieDao.getMovies()).thenReturn(Single.just(movies))
