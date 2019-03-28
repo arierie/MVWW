@@ -1,4 +1,4 @@
-package id.arieridwan.mvww.data.local.entity
+package id.arieridwan.mvww.data.disk.entity
 
 import androidx.room.Entity
 

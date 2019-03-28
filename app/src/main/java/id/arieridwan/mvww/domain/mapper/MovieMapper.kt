@@ -1,7 +1,7 @@
 package id.arieridwan.mvww.domain.mapper
 
-import id.arieridwan.mvww.data.local.entity.Movie
-import id.arieridwan.mvww.data.remote.entity.MovieResponse
+import id.arieridwan.mvww.data.disk.entity.Movie
+import id.arieridwan.mvww.data.network.entity.MovieResponse
 import id.arieridwan.mvww.presentation.entity.MovieUiModel
 
 object MovieMapper {

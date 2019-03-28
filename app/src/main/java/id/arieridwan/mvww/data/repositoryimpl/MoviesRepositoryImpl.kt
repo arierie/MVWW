@@ -1,7 +1,7 @@
 package id.arieridwan.mvww.data.repositoryimpl
 
-import id.arieridwan.mvww.data.local.dao.MovieDao
-import id.arieridwan.mvww.data.remote.service.ApiService
+import id.arieridwan.mvww.data.disk.dao.MovieDao
+import id.arieridwan.mvww.data.network.service.ApiService
 import id.arieridwan.mvww.domain.mapper.MovieMapper
 import id.arieridwan.mvww.domain.repository.MoviesRepository
 import id.arieridwan.mvww.presentation.entity.MovieUiModel

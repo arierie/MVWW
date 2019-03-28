@@ -1,9 +1,9 @@
-package id.arieridwan.mvww.data.local.database
+package id.arieridwan.mvww.data.disk.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import id.arieridwan.mvww.data.local.dao.MovieDao
-import id.arieridwan.mvww.data.local.entity.Movie
+import id.arieridwan.mvww.data.disk.dao.MovieDao
+import id.arieridwan.mvww.data.disk.entity.Movie
 
 /**
  * Created by arieridwan on 27/12/18.

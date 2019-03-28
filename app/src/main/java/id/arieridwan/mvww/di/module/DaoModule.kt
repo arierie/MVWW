@@ -4,8 +4,8 @@ import androidx.room.Room
 import dagger.Module
 import dagger.Provides
 import id.arieridwan.mvww.presentation.BaseApplication
-import id.arieridwan.mvww.data.local.dao.MovieDao
-import id.arieridwan.mvww.data.local.database.MovieDB
+import id.arieridwan.mvww.data.disk.dao.MovieDao
+import id.arieridwan.mvww.data.disk.database.MovieDB
 import javax.inject.Singleton
 
 /**

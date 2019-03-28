@@ -1,11 +1,11 @@
 package id.arieridwan.mvww.data.repositoryimpl
 
 import com.nhaarman.mockitokotlin2.*
-import id.arieridwan.mvww.data.local.dao.MovieDao
-import id.arieridwan.mvww.data.local.entity.Movie
-import id.arieridwan.mvww.data.remote.entity.MovieListResponse
-import id.arieridwan.mvww.data.remote.entity.MovieResponse
-import id.arieridwan.mvww.data.remote.service.ApiService
+import id.arieridwan.mvww.data.disk.dao.MovieDao
+import id.arieridwan.mvww.data.disk.entity.Movie
+import id.arieridwan.mvww.data.network.entity.MovieListResponse
+import id.arieridwan.mvww.data.network.entity.MovieResponse
+import id.arieridwan.mvww.data.network.service.ApiService
 import id.arieridwan.mvww.domain.repository.MoviesRepository
 import io.reactivex.Observable
 import io.reactivex.Single

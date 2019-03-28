@@ -1,4 +1,4 @@
-package id.arieridwan.mvww.data.remote.entity
+package id.arieridwan.mvww.data.network.entity
 
 import java.util.*
 

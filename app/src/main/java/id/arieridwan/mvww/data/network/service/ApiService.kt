@@ -1,8 +1,8 @@
-package id.arieridwan.mvww.data.remote.service
+package id.arieridwan.mvww.data.network.service
 
-import id.arieridwan.mvww.data.remote.entity.MovieListResponse
-import id.arieridwan.mvww.data.remote.entity.ReviewListResponse
-import id.arieridwan.mvww.data.remote.entity.TrailerListResponse
+import id.arieridwan.mvww.data.network.entity.MovieListResponse
+import id.arieridwan.mvww.data.network.entity.ReviewListResponse
+import id.arieridwan.mvww.data.network.entity.TrailerListResponse
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path

@@ -1,7 +1,7 @@
-package id.arieridwan.mvww.data.local.dao
+package id.arieridwan.mvww.data.disk.dao
 
 import androidx.room.*
-import id.arieridwan.mvww.data.local.entity.Movie
+import id.arieridwan.mvww.data.disk.entity.Movie
 import io.reactivex.Single
 
 /**
