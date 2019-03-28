@@ -80,6 +80,7 @@ object Deps {
     const val junit = "junit:junit:4.12"
     const val testRunner = "androidx.test:runner:1.1.0-alpha4"
     const val espressoCore = "androidx.test.espresso:espresso-core:3.1.0-alpha4"
+    const val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0"
 }
 
 object Config {

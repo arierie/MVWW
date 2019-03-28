@@ -7,7 +7,7 @@ import id.arieridwan.mvww.core.usecase.BaseUseCase
  * Created by arieridwan on 20/12/18.
  */
 
-abstract class BaseViewModel(vararg useCases: BaseUseCase) : ViewModel() {
+abstract class BaseViewModel(vararg useCases: BaseUseCase): ViewModel() {
 
     private var useCaseList: MutableList<BaseUseCase> = mutableListOf()
 

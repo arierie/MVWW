@@ -50,6 +50,7 @@ dependencies {
     implementation Deps.roomRx
 
     testImplementation Deps.junit
+    testImplementation Deps.mockitoKotlin
     androidTestImplementation Deps.testRunner
     androidTestImplementation Deps.espressoCore
 }

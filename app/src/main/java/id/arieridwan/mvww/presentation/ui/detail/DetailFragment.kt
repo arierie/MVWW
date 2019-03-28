@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import id.arieridwan.mvww.core.ui.BaseFragment
 import id.arieridwan.mvww.R
-import id.arieridwan.mvww.presentation.entity.MovieViewParam
+import id.arieridwan.mvww.presentation.entity.MovieUiModel
 import id.arieridwan.mvww.presentation.util.CommonUtils.getBackdropUrl
 import id.arieridwan.mvww.presentation.util.loadFromUrl
 import kotlinx.android.synthetic.main.fragment_detail.*
@@ -23,7 +23,7 @@ class DetailFragment: BaseFragment() {
     }
 
     private fun setData() {
-        val data: MovieViewParam? = arguments?.getParcelable(KEY_ARG)
+        val data: MovieUiModel? = arguments?.getParcelable(KEY_ARG)
         data?.let {
             tv_title.text = it.title
             tv_overview.text = it.overview

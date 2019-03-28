@@ -1,7 +1,7 @@
 package id.arieridwan.mvww.data.mapper
 
 import id.arieridwan.mvww.data.local.entity.Movie
-import id.arieridwan.mvww.presentation.entity.MovieViewParam
+import id.arieridwan.mvww.presentation.entity.MovieUiModel
 import id.arieridwan.mvww.data.remote.entity.MovieResponse
 
 /**
@@ -10,37 +10,37 @@ import id.arieridwan.mvww.data.remote.entity.MovieResponse
 
 object MovieMapper {
 
-    fun toMovieViewParamsFromResponse(movieList: List<MovieResponse>): List<MovieViewParam> {
-        val movieViewParams: MutableList<MovieViewParam> = mutableListOf()
+    fun toMovieViewParamsFromResponse(movieList: List<MovieResponse>): List<MovieUiModel> {
+        val movieUiModels: MutableList<MovieUiModel> = mutableListOf()
         movieList.forEach { movieResponse ->
-            movieViewParams.add(
-                MovieViewParam(
+            movieUiModels.add(
+                MovieUiModel(
                     movieResponse.title, movieResponse.posterPath, movieResponse.overview,
                     movieResponse.backdropPath, movieResponse.releaseDate, movieResponse.id,
                     movieResponse.video, movieResponse.voteAverage, movieResponse.popularity
                 )
             )
         }
-        return movieViewParams
+        return movieUiModels
     }
 
-    fun toMovieViewParamsFromMovie(movies: List<Movie>): List<MovieViewParam> {
-        val viewParams: MutableList<MovieViewParam> = mutableListOf()
+    fun toMovieViewParamsFromMovie(movies: List<Movie>): List<MovieUiModel> {
+        val uiModels: MutableList<MovieUiModel> = mutableListOf()
         movies.forEach { movie ->
-            viewParams.add(
-                MovieViewParam(
+            uiModels.add(
+                MovieUiModel(
                     movie.title, movie.posterPath, movie.overview,
                     movie.backdropPath, movie.releaseDate, movie.id,
                     movie.video, movie.voteAverage, movie.popularity
                 )
             )
         }
-        return viewParams
+        return uiModels
     }
 
-    fun toMovies(viewParam: List<MovieViewParam>): List<Movie> {
+    fun toMovies(uiModel: List<MovieUiModel>): List<Movie> {
         val movies: MutableList<Movie> = mutableListOf()
-        viewParam.forEach { item ->
+        uiModel.forEach { item ->
             movies.add(Movie(
                 item.title, item.posterPath, item.overview,
                 item.backdropPath, item.releaseDate, item.id,

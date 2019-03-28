@@ -7,10 +7,10 @@ import android.os.Parcelable
  * Created by arieridwan on 20/12/18.
  */
 
-class MovieViewParam(val title: String, val posterPath: String, val overview: String,
-                     val backdropPath: String, val releaseDate: String,
-                     val id: Int = 0, val video: Boolean = false, val voteAverage: Double = 0.toDouble(),
-                     val popularity: Double = 0.toDouble()): Parcelable {
+class MovieUiModel(val title: String, val posterPath: String, val overview: String,
+                   val backdropPath: String, val releaseDate: String,
+                   val id: Int = 0, val video: Boolean = false, val voteAverage: Double = 0.toDouble(),
+                   val popularity: Double = 0.toDouble()): Parcelable {
 
     constructor(parcel: Parcel) : this(
         parcel.readString(),
@@ -40,12 +40,12 @@ class MovieViewParam(val title: String, val posterPath: String, val overview: St
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<MovieViewParam> {
-        override fun createFromParcel(parcel: Parcel): MovieViewParam {
-            return MovieViewParam(parcel)
+    companion object CREATOR : Parcelable.Creator<MovieUiModel> {
+        override fun createFromParcel(parcel: Parcel): MovieUiModel {
+            return MovieUiModel(parcel)
         }
 
-        override fun newArray(size: Int): Array<MovieViewParam?> {
+        override fun newArray(size: Int): Array<MovieUiModel?> {
             return arrayOfNulls(size)
         }
     }

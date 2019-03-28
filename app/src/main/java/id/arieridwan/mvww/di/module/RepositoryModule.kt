@@ -2,6 +2,8 @@ package id.arieridwan.mvww.di.module
 
 import dagger.Module
 import dagger.Provides
+import id.arieridwan.mvww.BuildConfig
+import id.arieridwan.mvww.data.local.dao.MovieDao
 import id.arieridwan.mvww.data.local.database.MovieDB
 import id.arieridwan.mvww.data.remote.service.ApiService
 import id.arieridwan.mvww.domain.repository.MoviesRepository
@@ -17,7 +19,10 @@ class RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideMovieRepository(apiService: ApiService, movieDataBase: MovieDB): MoviesRepository =
-        MoviesRepositoryImpl(apiService, movieDataBase)
+    fun provideMovieRepository(apiKey: String, apiService: ApiService, movieDao: MovieDao): MoviesRepository =
+        MoviesRepositoryImpl(apiKey, apiService, movieDao)
 
+    @Provides
+    @Singleton
+    fun provideApiKey(): String = BuildConfig.ApiKey
 }

@@ -1,11 +1,10 @@
 package id.arieridwan.mvww.presentation.ui.adapter
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import id.arieridwan.mvww.R
-import id.arieridwan.mvww.presentation.entity.MovieViewParam
+import id.arieridwan.mvww.presentation.entity.MovieUiModel
 import id.arieridwan.mvww.presentation.util.CommonUtils.getPosterUrl
 import id.arieridwan.mvww.presentation.util.loadFromUrl
 import kotlinx.android.synthetic.main.list_item.view.*
@@ -16,7 +15,7 @@ import kotlinx.android.synthetic.main.list_item.view.*
 
 class MoviesAdapter : androidx.recyclerview.widget.RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>() {
 
-    private val mMovieList: MutableList<MovieViewParam> = mutableListOf()
+    private val mMovieList: MutableList<MovieUiModel> = mutableListOf()
     private var mItemListener: MoviesListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
@@ -43,7 +42,7 @@ class MoviesAdapter : androidx.recyclerview.widget.RecyclerView.Adapter<MoviesAd
         return mMovieList.size
     }
 
-    fun setMovies(movieList: List<MovieViewParam>) {
+    fun setMovies(movieList: List<MovieUiModel>) {
         mMovieList.clear()
         mMovieList.addAll(movieList)
         notifyDataSetChanged()
@@ -54,7 +53,7 @@ class MoviesAdapter : androidx.recyclerview.widget.RecyclerView.Adapter<MoviesAd
     }
 
     interface MoviesListener {
-        fun onItemClick(item: MovieViewParam)
+        fun onItemClick(item: MovieUiModel)
     }
 
     class MoviesViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView)

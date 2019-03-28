@@ -1,6 +1,6 @@
 package id.arieridwan.mvww.domain.repository
 
-import id.arieridwan.mvww.data.remote.entity.MovieResponse
+import id.arieridwan.mvww.presentation.entity.MovieUiModel
 import io.reactivex.Observable
 
 /**
@@ -9,6 +9,7 @@ import io.reactivex.Observable
 
 interface MoviesRepository {
 
-    fun loadMovies(category: String, page: Int): Observable<List<MovieResponse>>
+    fun loadMoviesFromNetwork(category: String, page: Int): Observable<List<MovieUiModel>>
+    fun loadMoviesFromDisk(category: String, page: Int): Observable<List<MovieUiModel>>
 
 }
