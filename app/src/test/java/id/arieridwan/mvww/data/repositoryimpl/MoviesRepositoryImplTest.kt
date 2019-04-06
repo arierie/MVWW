@@ -3,8 +3,8 @@ package id.arieridwan.mvww.data.repositoryimpl
 import com.nhaarman.mockitokotlin2.*
 import id.arieridwan.mvww.data.disk.dao.MovieDao
 import id.arieridwan.mvww.data.disk.entity.Movie
-import id.arieridwan.mvww.data.network.entity.MovieListResponse
-import id.arieridwan.mvww.data.network.entity.MovieResponse
+import id.arieridwan.mvww.data.network.response.MovieListResponse
+import id.arieridwan.mvww.data.network.response.MovieResponse
 import id.arieridwan.mvww.data.network.service.ApiService
 import id.arieridwan.mvww.domain.repository.MoviesRepository
 import io.reactivex.Observable

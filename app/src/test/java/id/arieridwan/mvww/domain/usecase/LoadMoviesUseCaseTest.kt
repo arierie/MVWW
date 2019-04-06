@@ -4,9 +4,8 @@ import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.verifyNoMoreInteractions
-import id.arieridwan.mvww.data.disk.entity.Movie
 import id.arieridwan.mvww.domain.repository.MoviesRepository
-import id.arieridwan.mvww.presentation.entity.MovieUiModel
+import id.arieridwan.mvww.presentation.model.MovieUiModel
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith

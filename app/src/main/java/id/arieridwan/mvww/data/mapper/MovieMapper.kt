@@ -1,8 +1,8 @@
 package id.arieridwan.mvww.data.mapper
 
 import id.arieridwan.mvww.data.disk.entity.Movie
-import id.arieridwan.mvww.presentation.entity.MovieUiModel
-import id.arieridwan.mvww.data.network.entity.MovieResponse
+import id.arieridwan.mvww.presentation.model.MovieUiModel
+import id.arieridwan.mvww.data.network.response.MovieResponse
 
 /**
  * Created by arieridwan on 20/12/18.

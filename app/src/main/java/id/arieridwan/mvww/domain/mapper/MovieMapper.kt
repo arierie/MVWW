@@ -1,8 +1,8 @@
 package id.arieridwan.mvww.domain.mapper
 
 import id.arieridwan.mvww.data.disk.entity.Movie
-import id.arieridwan.mvww.data.network.entity.MovieResponse
-import id.arieridwan.mvww.presentation.entity.MovieUiModel
+import id.arieridwan.mvww.data.network.response.MovieResponse
+import id.arieridwan.mvww.presentation.model.MovieUiModel
 
 object MovieMapper {
     fun fromListOfResponseToListOfUi(list: List<MovieResponse>): List<MovieUiModel> {

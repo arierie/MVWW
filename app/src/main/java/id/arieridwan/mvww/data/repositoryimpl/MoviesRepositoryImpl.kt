@@ -4,7 +4,7 @@ import id.arieridwan.mvww.data.disk.dao.MovieDao
 import id.arieridwan.mvww.data.network.service.ApiService
 import id.arieridwan.mvww.domain.mapper.MovieMapper
 import id.arieridwan.mvww.domain.repository.MoviesRepository
-import id.arieridwan.mvww.presentation.entity.MovieUiModel
+import id.arieridwan.mvww.presentation.model.MovieUiModel
 import io.reactivex.Observable
 
 class MoviesRepositoryImpl(private val apiKey: String,

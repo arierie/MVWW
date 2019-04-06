@@ -1,4 +1,4 @@
-package id.arieridwan.mvww.presentation.entity
+package id.arieridwan.mvww.presentation.model
 
 import android.os.Parcel
 import android.os.Parcelable

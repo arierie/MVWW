@@ -1,4 +1,4 @@
-package id.arieridwan.mvww.data.network.entity
+package id.arieridwan.mvww.data.network.response
 
 import com.squareup.moshi.Json
 

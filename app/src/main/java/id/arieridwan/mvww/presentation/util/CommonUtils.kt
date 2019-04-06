@@ -5,8 +5,8 @@ import androidx.lifecycle.LiveData
 import android.content.Context
 import android.view.View
 import android.widget.ImageView
-import id.arieridwan.mvww.di.module.GlideApp
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import id.arieridwan.mvww.di.module.GlideApp
 
 /**
  * Created by arieridwan on 20/12/18.

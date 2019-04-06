@@ -1,10 +1,10 @@
-package id.arieridwan.mvww.presentation.ui.adapter
+package id.arieridwan.mvww.presentation.ui.home
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import id.arieridwan.mvww.R
-import id.arieridwan.mvww.presentation.entity.MovieUiModel
+import id.arieridwan.mvww.presentation.model.MovieUiModel
 import id.arieridwan.mvww.presentation.util.CommonUtils.getPosterUrl
 import id.arieridwan.mvww.presentation.util.loadFromUrl
 import kotlinx.android.synthetic.main.list_item.view.*
@@ -13,18 +13,18 @@ import kotlinx.android.synthetic.main.list_item.view.*
  * Created by arieridwan on 20/12/18.
  */
 
-class MoviesAdapter : androidx.recyclerview.widget.RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>() {
+class MovieAdapter : androidx.recyclerview.widget.RecyclerView.Adapter<MovieAdapter.MoviesViewHolder>() {
 
     private val mMovieList: MutableList<MovieUiModel> = mutableListOf()
     private var mItemListener: MoviesListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
         return MoviesViewHolder(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.list_item,
-                parent,
-                false
-            )
+                LayoutInflater.from(parent.context).inflate(
+                        R.layout.list_item,
+                        parent,
+                        false
+                )
         )
     }
 

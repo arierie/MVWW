@@ -9,7 +9,6 @@ import id.arieridwan.mvww.di.ViewModelFactory
 import id.arieridwan.mvww.di.scope.ViewModelKey
 import id.arieridwan.mvww.presentation.ui.detail.DetailViewModel
 import id.arieridwan.mvww.presentation.ui.home.HomeViewModel
-import id.arieridwan.mvww.presentation.ui.main.MainViewModel
 
 /**
  * Created by arieridwan on 20/12/18.
@@ -19,9 +18,7 @@ import id.arieridwan.mvww.presentation.ui.main.MainViewModel
 abstract class ViewModelModule {
 
     @Binds
-    @IntoMap
-    @ViewModelKey(MainViewModel::class)
-    abstract fun bindMainViewModel(mainViewModel: MainViewModel): ViewModel
+    internal abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
 
     @Binds
     @IntoMap
@@ -32,8 +29,5 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(DetailViewModel::class)
     abstract fun bindDetailViewModel(detailViewModel: DetailViewModel): ViewModel
-
-    @Binds
-    internal abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
 
 }

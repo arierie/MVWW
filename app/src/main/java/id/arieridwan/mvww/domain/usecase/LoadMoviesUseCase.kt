@@ -2,7 +2,7 @@ package id.arieridwan.mvww.domain.usecase
 
 import id.arieridwan.mvww.core.usecase.ObservableUseCase
 import id.arieridwan.mvww.domain.repository.MoviesRepository
-import id.arieridwan.mvww.presentation.entity.MovieUiModel
+import id.arieridwan.mvww.presentation.model.MovieUiModel
 import io.reactivex.Observable
 import javax.inject.Inject
 

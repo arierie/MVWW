@@ -6,22 +6,17 @@ import android.view.View
 import android.widget.Toast
 
 import id.arieridwan.mvww.R
-import id.arieridwan.mvww.presentation.entity.MovieUiModel
-import id.arieridwan.mvww.presentation.ui.adapter.MoviesAdapter
+import id.arieridwan.mvww.presentation.model.MovieUiModel
 import id.arieridwan.mvww.core.ui.BaseFragment
-import id.arieridwan.mvww.core.state.DataRequestState
+import id.arieridwan.mvww.core.state.AsyncRequest
 import kotlinx.android.synthetic.main.fragment_home.*
-import id.arieridwan.mvww.core.state.State.SUCCEEDED
-import id.arieridwan.mvww.core.state.State.FAILED
-import id.arieridwan.mvww.core.state.State.COMPLETED
+import id.arieridwan.mvww.core.state.AsyncState.*
 
-class HomeFragment : BaseFragment(), MoviesAdapter.MoviesListener {
+class HomeFragment : BaseFragment(), MovieAdapter.MoviesListener {
 
     override fun layoutResource(): Int = R.layout.fragment_home
 
-    private val moviesAdapter: MoviesAdapter by lazy {
-        MoviesAdapter()
-    }
+    private val movieAdapter: MovieAdapter = MovieAdapter()
 
     private val mViewModel: HomeViewModel by lazy {
         ViewModelProviders.of(this, viewModelFactory).get(HomeViewModel::class.java)
@@ -35,10 +30,10 @@ class HomeFragment : BaseFragment(), MoviesAdapter.MoviesListener {
 
 
     private fun initView() {
-        moviesAdapter.setListener(this)
+        movieAdapter.setListener(this)
         recycler_view.apply {
             layoutManager = androidx.recyclerview.widget.GridLayoutManager(context, 2)
-            adapter = moviesAdapter
+            adapter = movieAdapter
         }
     }
 
@@ -51,11 +46,12 @@ class HomeFragment : BaseFragment(), MoviesAdapter.MoviesListener {
         if (swipe_refresh_layout.isRefreshing) swipe_refresh_layout.isRefreshing = false
     }
 
-    private fun updateMoviesUI(request: DataRequestState<List<MovieUiModel>>) {
+    private fun updateMoviesUI(request: AsyncRequest<List<MovieUiModel>>) {
         when (request.state) {
-            SUCCEEDED -> request.data?.let { movies -> moviesAdapter.setMovies(movies) }
-            FAILED -> Toast.makeText(context, "Failed with error : ${request.error}", Toast.LENGTH_SHORT).show()
-            COMPLETED -> {}
+            UNINITIALIZED -> {}
+            LOADING -> request.data?.let { movies -> movieAdapter.setMovies(movies) }
+            SUCCESS -> Toast.makeText(context, "Failed with error : ${request.error}", Toast.LENGTH_SHORT).show()
+            FAIL -> {}
         }
     }
 
