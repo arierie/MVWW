@@ -2,6 +2,7 @@ package id.arieridwan.mvww.di.module
 
 import dagger.Module
 import dagger.Provides
+import id.arieridwan.mvww.core.custom.schedulers.BaseSchedulerProvider
 import id.arieridwan.mvww.domain.usecase.LoadMoviesUseCase
 import id.arieridwan.mvww.domain.repository.MoviesRepository
 import javax.inject.Singleton

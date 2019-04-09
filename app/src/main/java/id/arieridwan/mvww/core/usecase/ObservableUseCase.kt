@@ -1,8 +1,9 @@
 package id.arieridwan.mvww.core.usecase
 
-import id.arieridwan.mvww.core.custom.schedulers.BaseSchedulerProvider
 import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
+import io.reactivex.schedulers.Schedulers
 
 /**
  * Created by arieridwan on 02/01/19.
@@ -16,15 +17,15 @@ abstract class ObservableUseCase<T, in Params>: BaseUseCase() {
         onNext: ((t: T) -> Unit),
         onError: ((t: Throwable) -> Unit),
         onComplete: (() -> Unit),
-        params: Params,
-        schedulerProvider: BaseSchedulerProvider
+        params: Params
     ) {
         disposeLast()
         lastDisposable = buildUseCaseObservable(params)
-            .subscribeOn(schedulerProvider.io())
-            .observeOn(schedulerProvider.ui())
-            .subscribe(onNext, onError, onComplete)
-            .addTo(compositeDisposable)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(onNext, onError, onComplete)
+                .addTo(compositeDisposable)
     }
+
 
 }

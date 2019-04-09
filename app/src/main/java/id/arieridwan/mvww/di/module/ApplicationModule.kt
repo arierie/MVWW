@@ -6,8 +6,6 @@ import android.preference.PreferenceManager
 import dagger.Module
 import dagger.Provides
 import dagger.android.AndroidInjectionModule
-import id.arieridwan.mvww.core.custom.schedulers.BaseSchedulerProvider
-import id.arieridwan.mvww.core.custom.schedulers.SchedulerProvider
 import id.arieridwan.mvww.presentation.BaseApplication
 import javax.inject.Singleton
 
@@ -17,10 +15,6 @@ import javax.inject.Singleton
 
 @Module(includes = [(AndroidInjectionModule::class), (ViewModelModule::class)])
 class ApplicationModule {
-
-    @Provides
-    @Singleton
-    fun provideScheduler(): BaseSchedulerProvider = SchedulerProvider()
 
     @Provides
     @Singleton

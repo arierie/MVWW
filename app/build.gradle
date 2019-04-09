@@ -24,9 +24,12 @@ dependencies {
     implementation Deps.dagger
     implementation Deps.daggerAndroid
     implementation Deps.daggerAndroidSupport
+
     kapt Deps.daggerCompiler
     kapt Deps.daggerAndroidProcessor
-    kaptAndroidTest Deps.daggerCompiler
+
+    kaptTest Deps.daggerCompiler
+    kaptTest Deps.daggerAndroidProcessor
 
     implementation Deps.glide
     kapt Deps.glideCompiler

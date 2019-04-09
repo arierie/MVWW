@@ -8,7 +8,9 @@ import io.reactivex.schedulers.TestScheduler
  * Created by arieridwan on 09/04/19.
  */
 
-class TestSchedulerProvider(private val testScheduler: TestScheduler): BaseSchedulerProvider {
+class TestSchedulerProvider: BaseSchedulerProvider {
+
+    private val testScheduler: TestScheduler = TestScheduler()
 
     override fun computation(): Scheduler = testScheduler
 
