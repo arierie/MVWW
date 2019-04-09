@@ -4,13 +4,14 @@ import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.Observer
 
+import id.arieridwan.mvww.domain.usecase.LoadMoviesUseCase
 import id.arieridwan.mvww.R
+import id.arieridwan.mvww.core.state.Async
 import id.arieridwan.mvww.presentation.model.MovieUiModel
 import id.arieridwan.mvww.core.ui.BaseFragment
-import id.arieridwan.mvww.core.state.AsyncRequest
 import kotlinx.android.synthetic.main.fragment_home.*
-import id.arieridwan.mvww.core.state.AsyncState.*
 
 class HomeFragment : BaseFragment(), MovieAdapter.MoviesListener {
 
@@ -26,8 +27,15 @@ class HomeFragment : BaseFragment(), MovieAdapter.MoviesListener {
         super.onViewCreated(view, savedInstanceState)
         initView()
         swipe_refresh_layout.setOnRefreshListener {  }
+        initObserver()
+        mViewModel.loadMovies(LoadMoviesUseCase.Params("popular", 1))
     }
 
+    private fun initObserver() {
+        mViewModel.loadMoviesLiveData.observe(this, Observer {
+            updateMoviesUI(it)
+        })
+    }
 
     private fun initView() {
         movieAdapter.setListener(this)
@@ -46,12 +54,13 @@ class HomeFragment : BaseFragment(), MovieAdapter.MoviesListener {
         if (swipe_refresh_layout.isRefreshing) swipe_refresh_layout.isRefreshing = false
     }
 
-    private fun updateMoviesUI(request: AsyncRequest<List<MovieUiModel>>) {
-        when (request.state) {
-            UNINITIALIZED -> {}
-            LOADING -> request.data?.let { movies -> movieAdapter.setMovies(movies) }
-            SUCCESS -> Toast.makeText(context, "Failed with error : ${request.error}", Toast.LENGTH_SHORT).show()
-            FAIL -> {}
+    private fun updateMoviesUI(request: Async<List<MovieUiModel>>) {
+        when (request) {
+            is Async.Uninitialized -> {}
+            is Async.Loading -> showLoading()
+            is Async.Success ->  movieAdapter.setMovies(request.value)
+            is Async.Fail -> Toast.makeText(context, "Failed with error : ${request.error}", Toast.LENGTH_SHORT).show()
+            is Async.Complete -> hideLoading()
         }
     }
 

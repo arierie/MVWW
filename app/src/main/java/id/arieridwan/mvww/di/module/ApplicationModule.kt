@@ -6,6 +6,8 @@ import android.preference.PreferenceManager
 import dagger.Module
 import dagger.Provides
 import dagger.android.AndroidInjectionModule
+import id.arieridwan.mvww.core.custom.schedulers.BaseSchedulerProvider
+import id.arieridwan.mvww.core.custom.schedulers.SchedulerProvider
 import id.arieridwan.mvww.presentation.BaseApplication
 import javax.inject.Singleton
 
@@ -16,15 +18,18 @@ import javax.inject.Singleton
 @Module(includes = [(AndroidInjectionModule::class), (ViewModelModule::class)])
 class ApplicationModule {
 
-    @Singleton
     @Provides
+    @Singleton
+    fun provideScheduler(): BaseSchedulerProvider = SchedulerProvider()
+
+    @Provides
+    @Singleton
     fun provideSharedPreferences(context: Context): SharedPreferences =
         PreferenceManager.getDefaultSharedPreferences(context)
 
-    @Singleton
     @Provides
-    fun provideContext(application: BaseApplication): Context {
-        return application.applicationContext
-    }
+    @Singleton
+    fun provideContext(application: BaseApplication): Context =
+            application.applicationContext
 
 }

@@ -30,9 +30,11 @@ object Deps {
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:1.1.3"
     // kotlin
     const val kotlinLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+    const val kotlinJunitTest = "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
     // dagger
     const val dagger = "com.google.dagger:dagger:$daggerVersion"
-    const val daggerSupport = "com.google.dagger:dagger-android-support:$daggerVersion"
+    const val daggerAndroid = "com.google.dagger:dagger-android:$daggerVersion"
+    const val daggerAndroidSupport = "com.google.dagger:dagger-android-support:$daggerVersion"
     const val daggerCompiler = "com.google.dagger:dagger-compiler:$daggerVersion"
     const val daggerAndroidProcessor = "com.google.dagger:dagger-android-processor:$daggerVersion"
     // glide
@@ -72,6 +74,7 @@ object Deps {
     const val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0"
     const val mockitoInline = "org.mockito:mockito-inline:2.13.0"
     const val coreTesting = "androidx.arch.core:core-testing:2.0.0"
+    const val mockServer = "com.squareup.okhttp:mockwebserver:2.7.5"
 }
 
 object Config {

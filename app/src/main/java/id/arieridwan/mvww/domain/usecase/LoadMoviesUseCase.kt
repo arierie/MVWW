@@ -1,6 +1,6 @@
 package id.arieridwan.mvww.domain.usecase
 
-import id.arieridwan.mvww.core.usecase.ObservableUseCase
+import id.arieridwan.mvww.core.usecase.BaseUseCase
 import id.arieridwan.mvww.domain.repository.MoviesRepository
 import id.arieridwan.mvww.presentation.model.MovieUiModel
 import io.reactivex.Observable
@@ -11,9 +11,9 @@ import javax.inject.Inject
  */
 
 class LoadMoviesUseCase @Inject constructor (private val moviesRepository: MoviesRepository)
-    : ObservableUseCase<List<MovieUiModel>, LoadMoviesUseCase.Params>() {
+    : BaseUseCase() {
 
-    override fun buildUseCaseObservable(params: Params): Observable<List<MovieUiModel>> {
+    fun buildUseCaseObservable(params: Params): Observable<List<MovieUiModel>> {
         return with(params) {
             moviesRepository.loadMoviesFromNetwork(category, page)
         }
@@ -23,5 +23,9 @@ class LoadMoviesUseCase @Inject constructor (private val moviesRepository: Movie
         val category: String,
         val page: Int
     )
+
+    fun loadMovies(params: Params): Observable<List<MovieUiModel>> {
+        return moviesRepository.loadMoviesFromNetwork(params.category, params.page)
+    }
 
 }

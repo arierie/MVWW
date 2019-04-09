@@ -7,9 +7,14 @@ plugins {
 
 apply from: '../baseconfig.gradle'
 
+kapt {
+    generateStubs = true
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation Deps.kotlinLib
+    implementation Deps.kotlinJunitTest
 
     implementation Deps.constraintLayout
     implementation Deps.recyclerView
@@ -17,9 +22,11 @@ dependencies {
     implementation Deps.material
 
     implementation Deps.dagger
-    implementation Deps.daggerSupport
+    implementation Deps.daggerAndroid
+    implementation Deps.daggerAndroidSupport
     kapt Deps.daggerCompiler
     kapt Deps.daggerAndroidProcessor
+    kaptAndroidTest Deps.daggerCompiler
 
     implementation Deps.glide
     kapt Deps.glideCompiler
@@ -53,6 +60,7 @@ dependencies {
     testImplementation Deps.coreTesting
     testImplementation Deps.mockitoKotlin
     testImplementation Deps.mockitoInline
+    testImplementation Deps.mockServer
     androidTestImplementation Deps.testRunner
     androidTestImplementation Deps.espressoCore
 }
