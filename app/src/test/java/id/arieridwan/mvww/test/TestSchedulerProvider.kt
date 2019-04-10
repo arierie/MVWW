@@ -2,7 +2,7 @@ package id.arieridwan.mvww.test
 
 import id.arieridwan.mvww.core.custom.schedulers.BaseSchedulerProvider
 import io.reactivex.Scheduler
-import io.reactivex.schedulers.TestScheduler
+import io.reactivex.schedulers.Schedulers
 
 /**
  * Created by arieridwan on 09/04/19.
@@ -10,12 +10,10 @@ import io.reactivex.schedulers.TestScheduler
 
 class TestSchedulerProvider: BaseSchedulerProvider {
 
-    private val testScheduler: TestScheduler = TestScheduler()
+    override fun computation(): Scheduler = Schedulers.trampoline()
 
-    override fun computation(): Scheduler = testScheduler
+    override fun io(): Scheduler = Schedulers.trampoline()
 
-    override fun io(): Scheduler = testScheduler
-
-    override fun ui(): Scheduler = testScheduler
+    override fun ui(): Scheduler = Schedulers.trampoline()
 
 }

@@ -13,7 +13,7 @@ import javax.inject.Singleton
  * Created by arieridwan on 20/12/18.
  */
 
-@Module(includes = [(AndroidInjectionModule::class), (ViewModelModule::class)])
+@Module(includes = [(AndroidInjectionModule::class), (ViewModelModule::class), (RxJavaModule::class)])
 class ApplicationModule {
 
     @Provides

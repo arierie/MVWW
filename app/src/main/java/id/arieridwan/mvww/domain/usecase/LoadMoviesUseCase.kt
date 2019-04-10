@@ -19,9 +19,6 @@ class LoadMoviesUseCase @Inject constructor(private val moviesRepository: Movies
         }
     }
 
-    data class Params(
-            val category: String,
-            val page: Int
-    )
+    data class Params(val category: String, val page: Int)
 
 }

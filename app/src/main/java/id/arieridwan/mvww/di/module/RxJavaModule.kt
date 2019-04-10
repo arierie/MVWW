@@ -2,8 +2,7 @@ package id.arieridwan.mvww.di.module
 
 import dagger.Module
 import dagger.Provides
-import id.arieridwan.mvww.core.custom.schedulers.BaseSchedulerProvider
-import id.arieridwan.mvww.core.custom.schedulers.SchedulerProvider
+import id.arieridwan.mvww.core.custom.schedulers.*
 import javax.inject.Singleton
 
 /**

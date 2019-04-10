@@ -1,13 +1,9 @@
 package id.arieridwan.mvww.domain.usecase
 
 import com.nhaarman.mockitokotlin2.*
-import id.arieridwan.mvww.core.custom.schedulers.BaseSchedulerProvider
 import id.arieridwan.mvww.domain.repository.MoviesRepository
 import id.arieridwan.mvww.presentation.model.MovieUiModel
-import id.arieridwan.mvww.test.BaseTest
-import id.arieridwan.mvww.test.TestSchedulerProvider
 import io.reactivex.Observable
-import io.reactivex.schedulers.TestScheduler
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -15,7 +11,7 @@ import org.junit.runners.JUnit4
 import org.mockito.MockitoAnnotations
 
 @RunWith(JUnit4::class)
-class LoadMoviesUseCaseTest: BaseTest() {
+class LoadMoviesUseCaseTest {
 
     private val movieRepository: MoviesRepository = mock()
     private val listOfUiModel: List<MovieUiModel> = mock()
@@ -23,8 +19,7 @@ class LoadMoviesUseCaseTest: BaseTest() {
     private lateinit var loadMovieUseCase: LoadMoviesUseCase
 
     @Before
-    override fun setUp() {
-        super.setUp()
+    fun setUp() {
         MockitoAnnotations.initMocks(this)
         loadMovieUseCase = LoadMoviesUseCase(movieRepository)
     }

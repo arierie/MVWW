@@ -4,10 +4,8 @@ import com.nhaarman.mockitokotlin2.*
 import id.arieridwan.mvww.data.disk.dao.MovieDao
 import id.arieridwan.mvww.data.disk.entity.Movie
 import id.arieridwan.mvww.data.network.response.MovieListResponse
-import id.arieridwan.mvww.data.network.response.MovieResponse
 import id.arieridwan.mvww.data.network.service.ApiService
 import id.arieridwan.mvww.domain.repository.MoviesRepository
-import id.arieridwan.mvww.test.BaseTest
 import io.reactivex.Observable
 import io.reactivex.Single
 import org.junit.Before
@@ -17,7 +15,7 @@ import org.junit.runners.JUnit4
 import org.mockito.MockitoAnnotations
 
 @RunWith(JUnit4::class)
-class MoviesRepositoryImplTest: BaseTest() {
+class MoviesRepositoryImplTest {
 
     private val apiKey = "myAwesomeButRandomKey"
     private val apiService = mock<ApiService>()
@@ -25,8 +23,7 @@ class MoviesRepositoryImplTest: BaseTest() {
     private lateinit var moviesRepository: MoviesRepository
 
     @Before
-    override fun setUp() {
-        super.setUp()
+    fun setUp() {
         MockitoAnnotations.initMocks(this)
         moviesRepository = MoviesRepositoryImpl(apiKey, apiService, movieDao)
     }
