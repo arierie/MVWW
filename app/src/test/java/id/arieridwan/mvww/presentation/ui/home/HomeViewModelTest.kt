@@ -3,14 +3,16 @@ package id.arieridwan.mvww.presentation.ui.home
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.nhaarman.mockitokotlin2.*
-import id.arieridwan.mvww.core.custom.schedulers.BaseSchedulerProvider
+import id.arieridwan.mvww.core.reactivex.schedulers.BaseSchedulerProvider
 import id.arieridwan.mvww.core.state.Async
 import id.arieridwan.mvww.domain.usecase.LoadMoviesUseCase
 import id.arieridwan.mvww.presentation.model.MovieUiModel
 import id.arieridwan.mvww.test.Constants
 import id.arieridwan.mvww.test.TestSchedulerProvider
 import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.observers.DisposableObserver
+import io.reactivex.observers.DisposableSingleObserver
 import junit.framework.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
@@ -22,8 +24,7 @@ import org.mockito.MockitoAnnotations
 @RunWith(JUnit4::class)
 class HomeViewModelTest {
 
-    @Rule
-    @JvmField
+    @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
     private val viewStateObserver: Observer<Async<List<MovieUiModel>>> = mock()
@@ -31,7 +32,7 @@ class HomeViewModelTest {
     private val schedulerProvider: BaseSchedulerProvider = TestSchedulerProvider()
     private val loadMovieUseCase: LoadMoviesUseCase = mock()
 
-    private lateinit var observerArgumentCaptor: KArgumentCaptor<DisposableObserver<List<MovieUiModel>>>
+    private lateinit var observerArgumentCaptor: KArgumentCaptor<DisposableSingleObserver<List<MovieUiModel>>>
     private lateinit var viewModel: HomeViewModel
     private lateinit var params: LoadMoviesUseCase.Params
 
@@ -44,14 +45,14 @@ class HomeViewModelTest {
 
     @Test
     fun `load movies success`() {
-        params = LoadMoviesUseCase.Params(Constants.DEFAULT_CATEGORY, Constants.DEFAULT_PAGE)
-        whenever(loadMovieUseCase.buildUseCaseObservable(params)).thenReturn(Observable.just(listOfUiModel))
+        params = LoadMoviesUseCase.Params(Constants.MOCK_CATEGORY, Constants.MOCK_PAGE)
+        whenever(loadMovieUseCase.buildUseCaseSingle(params)).thenReturn(Single.just(listOfUiModel))
 
         viewModel.loadMoviesLiveData.observeForever(viewStateObserver)
         viewModel.loadMovies(params)
         verify(loadMovieUseCase).execute(observerArgumentCaptor.capture(), eq(params), eq(schedulerProvider))
 
-        observerArgumentCaptor.firstValue.onNext(listOfUiModel)
+        observerArgumentCaptor.firstValue.onSuccess(listOfUiModel)
         argumentCaptor<Async<List<MovieUiModel>>> {
             verify(viewStateObserver, times(2)).onChanged(capture())
             val (firstState, secondState) = allValues
@@ -63,9 +64,9 @@ class HomeViewModelTest {
 
     @Test
     fun `load movies fail`() {
-        val expectedError = Throwable(Constants.DEFAULT_ERROR)
-        params = LoadMoviesUseCase.Params(Constants.DEFAULT_CATEGORY, Constants.DEFAULT_PAGE)
-        whenever(loadMovieUseCase.buildUseCaseObservable(params)).thenReturn(Observable.error(expectedError))
+        val expectedError = Throwable(Constants.MOCK_ERROR)
+        params = LoadMoviesUseCase.Params(Constants.MOCK_CATEGORY, Constants.MOCK_PAGE)
+        whenever(loadMovieUseCase.buildUseCaseSingle(params)).thenReturn(Single.error(expectedError))
 
         viewModel.loadMoviesLiveData.observeForever(viewStateObserver)
         viewModel.loadMovies(params)

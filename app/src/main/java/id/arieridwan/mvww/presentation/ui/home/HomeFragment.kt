@@ -45,7 +45,6 @@ class HomeFragment : BaseFragment(), MovieAdapter.MoviesListener {
         }
     }
 
-
     private fun showLoading() {
         if (!swipe_refresh_layout.isRefreshing) swipe_refresh_layout.isRefreshing = true
     }

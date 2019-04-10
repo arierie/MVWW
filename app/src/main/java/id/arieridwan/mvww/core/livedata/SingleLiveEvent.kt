@@ -1,4 +1,4 @@
-package id.arieridwan.mvww.core.custom
+package id.arieridwan.mvww.core.livedata
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData

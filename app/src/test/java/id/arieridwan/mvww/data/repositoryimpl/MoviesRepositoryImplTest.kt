@@ -6,6 +6,7 @@ import id.arieridwan.mvww.data.disk.entity.Movie
 import id.arieridwan.mvww.data.network.response.MovieListResponse
 import id.arieridwan.mvww.data.network.service.ApiService
 import id.arieridwan.mvww.domain.repository.MoviesRepository
+import id.arieridwan.mvww.test.Constants
 import io.reactivex.Observable
 import io.reactivex.Single
 import org.junit.Before
@@ -17,35 +18,35 @@ import org.mockito.MockitoAnnotations
 @RunWith(JUnit4::class)
 class MoviesRepositoryImplTest {
 
-    private val apiKey = "myAwesomeButRandomKey"
     private val apiService = mock<ApiService>()
     private val movieDao = mock<MovieDao>()
+    private val moviesResponse: MovieListResponse = mock()
+    private val movies: List<Movie> = mock()
+
     private lateinit var moviesRepository: MoviesRepository
 
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        moviesRepository = MoviesRepositoryImpl(apiKey, apiService, movieDao)
+        moviesRepository = MoviesRepositoryImpl(Constants.MOCK_API_KEY, apiService, movieDao)
     }
 
     @Test
     fun loadMoviesFromNetworkSuccess() {
-        val category = ""
-        val page = 0
-        val moviesResponse: MovieListResponse = mock()
-        whenever(apiService.getMovies(category, apiKey, page)).thenReturn(Observable.just(moviesResponse))
-        moviesRepository.loadMoviesFromNetwork(category, page)
-        verify(apiService, times(1)).getMovies(category, apiKey, page)
+        whenever(apiService.getMovies(Constants.MOCK_CATEGORY, Constants.MOCK_API_KEY, Constants.MOCK_PAGE)).thenReturn(Observable.just(moviesResponse))
+
+        moviesRepository.loadMoviesFromNetwork(Constants.MOCK_CATEGORY, Constants.MOCK_PAGE)
+
+        verify(apiService, times(1)).getMovies(Constants.MOCK_CATEGORY, Constants.MOCK_API_KEY, Constants.MOCK_PAGE)
         verifyNoMoreInteractions(apiService)
     }
 
     @Test
     fun loadMoviesFromDiskSuccess() {
-        val category = ""
-        val page = 0
-        val movies: List<Movie> = mock()
         whenever(movieDao.getMovies()).thenReturn(Single.just(movies))
-        moviesRepository.loadMoviesFromDisk(category, page)
+
+        moviesRepository.loadMoviesFromDisk(Constants.MOCK_CATEGORY, Constants.MOCK_PAGE)
+
         verify(movieDao, times(1)).getMovies()
         verifyNoMoreInteractions(movieDao)
     }

@@ -1,4 +1,4 @@
-package id.arieridwan.mvww.core.custom.schedulers
+package id.arieridwan.mvww.core.reactivex.schedulers
 
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers

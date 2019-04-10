@@ -1,6 +1,6 @@
 package id.arieridwan.mvww.core.usecase
 
-import id.arieridwan.mvww.core.custom.schedulers.BaseSchedulerProvider
+import id.arieridwan.mvww.core.reactivex.schedulers.BaseSchedulerProvider
 import io.reactivex.Observable
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.rxkotlin.addTo
@@ -13,7 +13,9 @@ abstract class ObservableUseCase<T, in Params>: BaseUseCase() {
 
     internal abstract fun buildUseCaseObservable(params: Params): Observable<T>
 
-    internal fun execute(observer: DisposableObserver<T>, params: Params, schedulerProvider: BaseSchedulerProvider) {
+    internal fun execute(observer: DisposableObserver<T>,
+                         params: Params,
+                         schedulerProvider: BaseSchedulerProvider) {
         disposeLast()
         lastDisposable = buildUseCaseObservable(params)
                 .subscribeOn(schedulerProvider.io())

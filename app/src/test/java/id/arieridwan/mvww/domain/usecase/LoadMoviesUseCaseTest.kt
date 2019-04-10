@@ -3,7 +3,8 @@ package id.arieridwan.mvww.domain.usecase
 import com.nhaarman.mockitokotlin2.*
 import id.arieridwan.mvww.domain.repository.MoviesRepository
 import id.arieridwan.mvww.presentation.model.MovieUiModel
-import io.reactivex.Observable
+import id.arieridwan.mvww.test.Constants
+import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -26,10 +27,12 @@ class LoadMoviesUseCaseTest {
 
     @Test
     fun shouldCallRepository() {
-        val params = LoadMoviesUseCase.Params("category", 0)
-        whenever(movieRepository.loadMoviesFromNetwork(any(), any())).thenReturn(Observable.just(listOfUiModel))
-        loadMovieUseCase.buildUseCaseObservable(params)
-        verify(movieRepository, times(1)).loadMoviesFromNetwork("category", 0)
+        val params = LoadMoviesUseCase.Params(Constants.MOCK_CATEGORY, Constants.MOCK_PAGE)
+        whenever(movieRepository.loadMoviesFromNetwork(any(), any())).thenReturn(Single.just(listOfUiModel))
+
+        loadMovieUseCase.buildUseCaseSingle(params)
+
+        verify(movieRepository, times(1)).loadMoviesFromNetwork(Constants.MOCK_CATEGORY, Constants.MOCK_PAGE)
         verifyNoMoreInteractions(movieRepository)
     }
 

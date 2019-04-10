@@ -5,7 +5,8 @@ package id.arieridwan.mvww.test
  */
 
 object Constants {
-    const val DEFAULT_ERROR = "BGST"
-    const val DEFAULT_CATEGORY = "category"
-    const val DEFAULT_PAGE = 0
+    const val MOCK_ERROR = "unacceptableArgument"
+    const val MOCK_CATEGORY = "category"
+    const val MOCK_PAGE = 0
+    const val MOCK_API_KEY = "mySuperDuperAwesomeApiKey"
 }
