@@ -6,6 +6,8 @@ buildscript {
     dependencies {
         classpath Config.gradlePlugin
         classpath Config.kotlinPlugin
+        classpath Config.jacocoCoreGradlePlugin
+        classpath Config.jacocoAndroidGradlePlugin
     }
     repositories {
         google()

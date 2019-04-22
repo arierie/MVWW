@@ -69,12 +69,18 @@ object Deps {
     const val roomRx = "androidx.room:room-rxjava2:$archVersion"
     // testing
     const val junit = "junit:junit:4.12"
+    const val androidJunit = "androidx.test.ext:junit:1.0.0"
+    const val truth = "androidx.test.ext:truth:1.0.0"
     const val testRunner = "androidx.test:runner:1.1.0"
+    const val testRule = "androidx.test:rules:1.1.0"
     const val espressoCore = "androidx.test.espresso:espresso-core:3.1.0"
     const val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0"
     const val mockitoInline = "org.mockito:mockito-inline:2.13.0"
     const val coreTesting = "androidx.arch.core:core-testing:2.0.0"
     const val mockServer = "com.squareup.okhttp:mockwebserver:2.7.5"
+    const val multidex = "androidx.multidex:multidex:2.0.0"
+    const val orchestrator = "androidx.test:orchestrator:1.1.0"
+    const val robolectric = "org.robolectric:robolectric:3.7.1"
 }
 
 object Config {
@@ -87,5 +93,7 @@ object Config {
     const val packageName = "id.arieridwan.mvww"
     const val gradlePlugin = "com.android.tools.build:gradle:3.3.2"
     const val kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+    const val jacocoAndroidGradlePlugin = "com.dicedmelon.gradle:jacoco-android:0.1.4"
+    const val jacocoCoreGradlePlugin = "org.jacoco:org.jacoco.core:0.8.0"
     const val testRunner = "androidx.test.runner.AndroidJUnitRunner"
 }

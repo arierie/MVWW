@@ -9,11 +9,9 @@ import id.arieridwan.mvww.domain.usecase.LoadMoviesUseCase
 import id.arieridwan.mvww.presentation.model.MovieUiModel
 import id.arieridwan.mvww.test.Constants
 import id.arieridwan.mvww.test.TestSchedulerProvider
-import io.reactivex.Observable
 import io.reactivex.Single
-import io.reactivex.observers.DisposableObserver
 import io.reactivex.observers.DisposableSingleObserver
-import junit.framework.Assert.assertTrue
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
