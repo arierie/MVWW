@@ -145,7 +145,6 @@ def androidExclusion = [
 ]
 
 project.afterEvaluate {
-    //Gather build type and product flavor names in a list
     def buildTypes = android.buildTypes.collect { type -> type.name }
     def productFlavors = android.productFlavors.collect { flavor -> flavor.name }
     if (!productFlavors) productFlavors.add('')
@@ -153,7 +152,6 @@ project.afterEvaluate {
     productFlavors.each { productFlavorName ->
         buildTypes.each { buildTypeName ->
 
-            //Define the sourceName and the sourcePath.
             def sourceName, sourcePath
             if (!productFlavorName) {
                 sourceName = sourcePath = "${buildTypeName}"
@@ -174,7 +172,6 @@ project.afterEvaluate {
                     html.enabled true
                 }
 
-                //Directory where the compiled class files are
                 classDirectories = fileTree(dir: "${project.buildDir}/tmp/kotlin-classes/${sourcePath}",  excludes: androidExclusion)
 
                 sourceDirectories = files(["src/main/kotlin",

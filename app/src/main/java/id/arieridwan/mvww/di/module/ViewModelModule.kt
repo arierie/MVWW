@@ -22,9 +22,8 @@ class ViewModelModule {
     @Suppress("UNCHECKED_CAST")
     @Provides
     @Singleton
-    fun provideViewModelFactory(
-            providers: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
-    ) = object : ViewModelProvider.Factory {
+    fun provideViewModelFactory(providers: Map<Class<out ViewModel>,
+            @JvmSuppressWildcards Provider<ViewModel>>) = object : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             return requireNotNull(providers[modelClass as Class<out ViewModel>]).get() as T
         }
@@ -32,15 +31,14 @@ class ViewModelModule {
 
     @Provides
     fun provideHomeViewModel(factory: ViewModelProvider.Factory,
-                          target: HomeFragment): ViewModel {
+                             target: HomeFragment): ViewModel {
         return ViewModelProviders.of(target, factory).get(HomeViewModel::class.java)
     }
 
     @Provides
     fun provideDetailViewModel(factory: ViewModelProvider.Factory,
-                          target: DetailFragment): ViewModel {
+                               target: DetailFragment): ViewModel {
         return ViewModelProviders.of(target, factory).get(DetailViewModel::class.java)
     }
-
 
 }
