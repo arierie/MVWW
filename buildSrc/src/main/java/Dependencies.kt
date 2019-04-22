@@ -11,8 +11,8 @@ import Versions.supportVersion
 
 object Versions {
     const val supportVersion = "1.0.0-beta01"
-    const val kotlinVersion = "1.3.21"
-    const val daggerVersion = "2.17"
+    const val kotlinVersion = "1.3.30"
+    const val daggerVersion = "2.20"
     const val glideVersion = "4.9.0"
     const val retrofitVersion = "2.4.0"
     const val okHttpVersion = "3.11.0"
@@ -29,7 +29,8 @@ object Deps {
     const val material = "com.google.android.material:material:$supportVersion"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:1.1.3"
     // kotlin
-    const val kotlinLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+    const val kotlinLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+    const val kotlinReflect = "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
     const val kotlinJunitTest = "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
     // dagger
     const val dagger = "com.google.dagger:dagger:$daggerVersion"

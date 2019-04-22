@@ -8,7 +8,6 @@ import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasFragmentInjector
 import dagger.android.support.HasSupportFragmentInjector
-import id.arieridwan.mvww.di.ViewModelFactory
 import javax.inject.Inject
 
 /**
@@ -23,9 +22,6 @@ abstract class BaseActivity : AppCompatActivity(),
 
     @Inject
     lateinit var supportFragmentInjector: DispatchingAndroidInjector<androidx.fragment.app.Fragment>
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
 
     abstract fun layoutResource(): Int
 

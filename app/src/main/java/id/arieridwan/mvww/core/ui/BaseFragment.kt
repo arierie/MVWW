@@ -12,7 +12,6 @@ import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.HasSupportFragmentInjector
-import id.arieridwan.mvww.di.ViewModelFactory
 import androidx.fragment.app.Fragment
 import javax.inject.Inject
 
@@ -21,9 +20,6 @@ import javax.inject.Inject
  */
 
 abstract class BaseFragment: Fragment(), HasSupportFragmentInjector {
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
 
     @Inject
     lateinit var childFragmentInjector: DispatchingAndroidInjector<Fragment>

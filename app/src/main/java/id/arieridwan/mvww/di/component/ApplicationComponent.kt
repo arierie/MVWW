@@ -26,8 +26,6 @@ interface ApplicationComponent {
     @Component.Builder
     interface Builder {
 
-        fun applicationModule(applicationModule: ApplicationModule): Builder
-
         @BindsInstance
         fun application(application: BaseApplication): Builder
 

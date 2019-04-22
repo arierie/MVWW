@@ -1,6 +1,5 @@
 package id.arieridwan.mvww.presentation.ui.home
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -12,6 +11,7 @@ import id.arieridwan.mvww.core.state.Async
 import id.arieridwan.mvww.presentation.model.MovieUiModel
 import id.arieridwan.mvww.core.ui.BaseFragment
 import kotlinx.android.synthetic.main.fragment_home.*
+import javax.inject.Inject
 
 class HomeFragment : BaseFragment(), MovieAdapter.MoviesListener {
 
@@ -19,9 +19,8 @@ class HomeFragment : BaseFragment(), MovieAdapter.MoviesListener {
 
     private val movieAdapter: MovieAdapter = MovieAdapter()
 
-    private val mViewModel: HomeViewModel by lazy {
-        ViewModelProviders.of(this, viewModelFactory).get(HomeViewModel::class.java)
-    }
+    @Inject
+    lateinit var mViewModel: HomeViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

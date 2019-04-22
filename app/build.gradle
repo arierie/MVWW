@@ -45,6 +45,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation Deps.kotlinLib
+    implementation Deps.kotlinReflect
     implementation Deps.kotlinJunitTest
 
     implementation Deps.constraintLayout

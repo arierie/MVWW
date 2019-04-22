@@ -2,32 +2,45 @@ package id.arieridwan.mvww.di.module
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import dagger.Binds
+import androidx.lifecycle.ViewModelProviders
 import dagger.Module
-import dagger.multibindings.IntoMap
-import id.arieridwan.mvww.di.ViewModelFactory
-import id.arieridwan.mvww.di.scope.ViewModelKey
+import dagger.Provides
+import id.arieridwan.mvww.presentation.ui.detail.DetailFragment
 import id.arieridwan.mvww.presentation.ui.detail.DetailViewModel
+import id.arieridwan.mvww.presentation.ui.home.HomeFragment
 import id.arieridwan.mvww.presentation.ui.home.HomeViewModel
+import javax.inject.Provider
+import javax.inject.Singleton
 
 /**
  * Created by arieridwan on 20/12/18.
  */
 
 @Module
-abstract class ViewModelModule {
+class ViewModelModule {
 
-    @Binds
-    internal abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
+    @Suppress("UNCHECKED_CAST")
+    @Provides
+    @Singleton
+    fun provideViewModelFactory(
+            providers: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
+    ) = object : ViewModelProvider.Factory {
+        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            return requireNotNull(providers[modelClass as Class<out ViewModel>]).get() as T
+        }
+    }
 
-    @Binds
-    @IntoMap
-    @ViewModelKey(HomeViewModel::class)
-    abstract fun bindHomeViewModel(homeViewModel: HomeViewModel): ViewModel
+    @Provides
+    fun provideHomeViewModel(factory: ViewModelProvider.Factory,
+                          target: HomeFragment): ViewModel {
+        return ViewModelProviders.of(target, factory).get(HomeViewModel::class.java)
+    }
 
-    @Binds
-    @IntoMap
-    @ViewModelKey(DetailViewModel::class)
-    abstract fun bindDetailViewModel(detailViewModel: DetailViewModel): ViewModel
+    @Provides
+    fun provideDetailViewModel(factory: ViewModelProvider.Factory,
+                          target: DetailFragment): ViewModel {
+        return ViewModelProviders.of(target, factory).get(DetailViewModel::class.java)
+    }
+
 
 }
