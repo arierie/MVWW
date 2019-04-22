@@ -16,9 +16,12 @@ env:
   # install timeout in minutes (2 minutes by default)
   - ADB_INSTALL_TIMEOUT=8
 
-# Run assemble and unit tests
 script:
+# Run assemble and unit tests
 - ./gradlew clean assembleDebug assembleRelease testDebug createDebugUnitTestCoverageReport --stacktrace
+# Renaming folder and files of reports so codecov.io can find it
+- mv app/build/reports/jacoco/createDebugUnitTestCoverageReport app/build/reports/jacoco/jacocoTestDebugUnitTestReport
+- mv app/build/reports/jacoco/jacocoTestDebugUnitTestReport/createDebugUnitTestCoverageReport.xml app/build/reports/jacoco/jacocoTestDebugUnitTestReport/jacocoTestDebugUnitTestReport.xml
 
 after_success:
 # Codecov.io
