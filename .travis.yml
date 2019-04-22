@@ -1,4 +1,5 @@
 language: android
+sudo: required
 jdk: oraclejdk8
 
 android:
@@ -17,7 +18,7 @@ env:
 
 # Run assemble and unit tests
 script:
-- ./gradlew clean assembleDebug assembleRelease testDebug createDebugUnitTestCoverageReport
+- ./gradlew clean assembleDebug assembleRelease testDebug createDebugUnitTestCoverageReport --stacktrace
 
 after_success:
 # Codecov.io
