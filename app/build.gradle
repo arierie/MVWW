@@ -24,12 +24,12 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField "String", "BASE_URL", "\"http://api.themoviedb.org/3/\""
-            buildConfigField 'String', "ApiKey", apiKey
+            buildConfigField 'String', "ApiKey", "765e4945e78f4a4497cd97a5734894d9" // TODO change it to your API_KEY
         }
         debug {
             testCoverageEnabled true
             buildConfigField "String", "BASE_URL", "\"http://api.themoviedb.org/3/\""
-            buildConfigField 'String', "ApiKey", apiKey
+            buildConfigField 'String', "ApiKey", "\"765e4945e78f4a4497cd97a5734894d9\"" // TODO change it to your API_KEY
         }
     }
     testOptions {
@@ -38,9 +38,6 @@ android {
             jacoco {
                 includeNoLocationClasses = true
             }
-        }
-        unitTests {
-            includeAndroidResources = true
         }
     }
 }
