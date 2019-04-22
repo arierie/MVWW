@@ -13,19 +13,20 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.HasSupportFragmentInjector
 import id.arieridwan.mvww.di.ViewModelFactory
+import androidx.fragment.app.Fragment
 import javax.inject.Inject
 
 /**
  * Created by arieridwan on 26/12/18.
  */
 
-abstract class BaseFragment: androidx.fragment.app.Fragment(), HasSupportFragmentInjector {
+abstract class BaseFragment: Fragment(), HasSupportFragmentInjector {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
     @Inject
-    lateinit var childFragmentInjector: DispatchingAndroidInjector<androidx.fragment.app.Fragment>
+    lateinit var childFragmentInjector: DispatchingAndroidInjector<Fragment>
 
     abstract fun layoutResource(): Int
 
@@ -38,7 +39,7 @@ abstract class BaseFragment: androidx.fragment.app.Fragment(), HasSupportFragmen
         super.onAttach(context)
     }
 
-    override fun supportFragmentInjector(): AndroidInjector<androidx.fragment.app.Fragment>? {
+    override fun supportFragmentInjector(): AndroidInjector<Fragment>? {
         return childFragmentInjector
     }
 
