@@ -27,9 +27,9 @@ class HomeViewModelTest {
 
     private val viewStateObserver: Observer<Async<List<MovieUiModel>>> = mock()
     private val listOfUiModel: List<MovieUiModel> = mock()
-    private val schedulerProvider: BaseSchedulerProvider = TestSchedulerProvider()
     private val loadMovieUseCase: LoadMoviesUseCase = mock()
 
+    private lateinit var schedulerProvider: BaseSchedulerProvider
     private lateinit var observerArgumentCaptor: KArgumentCaptor<DisposableSingleObserver<List<MovieUiModel>>>
     private lateinit var viewModel: HomeViewModel
     private lateinit var params: LoadMoviesUseCase.Params
@@ -37,6 +37,7 @@ class HomeViewModelTest {
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
+        schedulerProvider = TestSchedulerProvider()
         observerArgumentCaptor = argumentCaptor()
         viewModel = HomeViewModel(loadMovieUseCase, schedulerProvider)
     }
@@ -48,9 +49,10 @@ class HomeViewModelTest {
 
         viewModel.loadMoviesLiveData.observeForever(viewStateObserver)
         viewModel.loadMovies(params)
-        verify(loadMovieUseCase).execute(observerArgumentCaptor.capture(), eq(params), eq(schedulerProvider))
 
+        verify(loadMovieUseCase).execute(observerArgumentCaptor.capture(), eq(params), eq(schedulerProvider))
         observerArgumentCaptor.firstValue.onSuccess(listOfUiModel)
+
         argumentCaptor<Async<List<MovieUiModel>>> {
             verify(viewStateObserver, times(2)).onChanged(capture())
             val (firstState, secondState) = allValues
@@ -69,8 +71,8 @@ class HomeViewModelTest {
         viewModel.loadMoviesLiveData.observeForever(viewStateObserver)
         viewModel.loadMovies(params)
         verify(loadMovieUseCase).execute(observerArgumentCaptor.capture(), eq(params), eq(schedulerProvider))
-
         observerArgumentCaptor.firstValue.onError(expectedError)
+
         argumentCaptor<Async<List<MovieUiModel>>> {
             verify(viewStateObserver, times(2)).onChanged(capture())
             val (firstState, secondState) = allValues

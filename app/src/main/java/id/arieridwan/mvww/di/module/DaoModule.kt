@@ -3,7 +3,7 @@ package id.arieridwan.mvww.di.module
 import androidx.room.Room
 import dagger.Module
 import dagger.Provides
-import id.arieridwan.mvww.presentation.BaseApplication
+import id.arieridwan.mvww.BaseApplication
 import id.arieridwan.mvww.data.disk.dao.MovieDao
 import id.arieridwan.mvww.data.disk.database.MovieDB
 import javax.inject.Singleton

@@ -1,4 +1,4 @@
-package id.arieridwan.mvww.presentation
+package id.arieridwan.mvww
 
 import android.app.Activity
 import android.app.Application

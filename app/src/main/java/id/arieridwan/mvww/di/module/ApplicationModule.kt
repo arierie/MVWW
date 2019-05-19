@@ -6,7 +6,7 @@ import android.preference.PreferenceManager
 import dagger.Module
 import dagger.Provides
 import dagger.android.AndroidInjectionModule
-import id.arieridwan.mvww.presentation.BaseApplication
+import id.arieridwan.mvww.BaseApplication
 import javax.inject.Singleton
 
 /**

@@ -3,7 +3,7 @@ package id.arieridwan.mvww.di.component
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule
-import id.arieridwan.mvww.presentation.BaseApplication
+import id.arieridwan.mvww.BaseApplication
 import id.arieridwan.mvww.di.module.*
 import javax.inject.Singleton
 
