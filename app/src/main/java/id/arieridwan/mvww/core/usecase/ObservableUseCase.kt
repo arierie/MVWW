@@ -1,6 +1,6 @@
 package id.arieridwan.mvww.core.usecase
 
-import id.arieridwan.mvww.core.reactivex.schedulers.BaseSchedulerProvider
+import id.arieridwan.mvww.core.reactivex.scheduler.BaseSchedulerProvider
 import io.reactivex.Observable
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.rxkotlin.addTo

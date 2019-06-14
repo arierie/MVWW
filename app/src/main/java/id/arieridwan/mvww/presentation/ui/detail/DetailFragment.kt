@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.View
 import id.arieridwan.mvww.core.ui.BaseFragment
 import id.arieridwan.mvww.R
+import id.arieridwan.mvww.presentation.ext.loadFromUrl
 import id.arieridwan.mvww.presentation.model.MovieUiModel
-import id.arieridwan.mvww.presentation.util.CommonUtils.getBackdropUrl
-import id.arieridwan.mvww.presentation.util.loadFromUrl
+import id.arieridwan.mvww.presentation.util.CommonUtil.getBackdropUrl
 import kotlinx.android.synthetic.main.fragment_detail.*
 
 /**

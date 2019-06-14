@@ -2,7 +2,7 @@ package id.arieridwan.mvww.presentation.ui.home
 
 import androidx.lifecycle.MutableLiveData
 import id.arieridwan.mvww.core.reactivex.observer.SingleObserver
-import id.arieridwan.mvww.core.reactivex.schedulers.BaseSchedulerProvider
+import id.arieridwan.mvww.core.reactivex.scheduler.BaseSchedulerProvider
 import id.arieridwan.mvww.core.state.Async
 import id.arieridwan.mvww.domain.usecase.LoadMoviesUseCase
 import id.arieridwan.mvww.core.ui.BaseViewModel

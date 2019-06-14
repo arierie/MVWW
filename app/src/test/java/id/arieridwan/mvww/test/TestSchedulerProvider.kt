@@ -1,6 +1,6 @@
 package id.arieridwan.mvww.test
 
-import id.arieridwan.mvww.core.reactivex.schedulers.BaseSchedulerProvider
+import id.arieridwan.mvww.core.reactivex.scheduler.BaseSchedulerProvider
 import io.reactivex.Scheduler
 import io.reactivex.schedulers.Schedulers
 

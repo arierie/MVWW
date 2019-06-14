@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import id.arieridwan.mvww.R
+import id.arieridwan.mvww.presentation.ext.loadFromUrl
 import id.arieridwan.mvww.presentation.model.MovieUiModel
-import id.arieridwan.mvww.presentation.util.CommonUtils.getPosterUrl
-import id.arieridwan.mvww.presentation.util.loadFromUrl
+import id.arieridwan.mvww.presentation.util.CommonUtil.getPosterUrl
 import kotlinx.android.synthetic.main.list_item.view.*
 
 /**
